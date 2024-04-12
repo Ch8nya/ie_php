@@ -1,9 +1,8 @@
 <?php
 session_start();
+require_once 'config.php';
 
 if (isset($_SESSION['user_id'])) {
-    // User is already logged in, check buy_status
-    $conn = new mysqli("onnjomlc4vqc55fw.chr7pe7iynqr.eu-west-1.rds.amazonaws.com", "cux5nmdarh8rqgpx", "zjd0gozcfoirbp2a", "laonzmp2o0pw3k5c", 3306);
     $user_id = $_SESSION['user_id'];
     $sql = "SELECT buy_status FROM users WHERE id = $user_id";
     $result = $conn->query($sql);
@@ -12,18 +11,16 @@ if (isset($_SESSION['user_id'])) {
     
     if ($buy_status == 1) {
         header("Location: learn.php");
-        exit();
     } else {
         header("Location: buy.php");
-        exit();
     }
+    exit();
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    $conn = new mysqli("onnjomlc4vqc55fw.chr7pe7iynqr.eu-west-1.rds.amazonaws.com", "cux5nmdarh8rqgpx", "zjd0gozcfoirbp2a", "laonzmp2o0pw3k5c", 3306);
     $sql = "SELECT id, buy_status FROM users WHERE email = '$email' AND password = '$password'";
     $result = $conn->query($sql);
 
