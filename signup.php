@@ -7,12 +7,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    $sql = "INSERT INTO users (first_name, last_name, email, password) VALUES ('$first_name', '$last_name', '$email', '$password')";
-
+    $sql = "INSERT INTO users (first_name, last_name, email, password, buy_status) VALUES ('$first_name', '$last_name', '$email', '$password', 0)";
     if ($conn->query($sql) === TRUE) {
-        $success = "Sign up successful. Login <a href='login.php'>here</a>";
+        header("Location: login.php");
+        exit();
     } else {
-        $error = "Error: " . $sql . "<br>" . $conn->error;
+        echo "Error: " . $sql . "<br>" . $conn->error;
     }
 }
 ?>
@@ -24,8 +24,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 <body>
     <h2>Sign Up</h2>
-    <?php if (isset($error)) { echo "<p>$error</p>"; } ?>
-    <?php if (isset($success)) { echo "<p>$success</p>"; } else { ?>
     <form method="POST" action="">
         <label>First Name:</label>
         <input type="text" name="first_name" required><br>
@@ -37,6 +35,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <input type="password" name="password" required><br>
         <input type="submit" value="Sign Up">
     </form>
-    <?php } ?>
 </body>
 </html>
