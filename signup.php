@@ -1,4 +1,12 @@
 <?php
+session_start();
+require_once 'config.php';
+
+if (isset($_SESSION['user_id'])) {
+    header("Location: learn.php");
+    exit();
+}
+
 require_once 'config.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
