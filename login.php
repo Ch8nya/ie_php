@@ -2,6 +2,11 @@
 session_start();
 require_once 'config.php';
 
+if (isset($_SESSION['user_id'])) {
+    header("Location: learn.php");
+    exit();
+}
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
     $password = $_POST['password'];
