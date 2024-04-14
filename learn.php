@@ -8,6 +8,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 $user_id = $_SESSION['user_id'];
+
 $sql = "SELECT buy_status FROM users WHERE id = $user_id";
 $result = $conn->query($sql);
 $row = $result->fetch_assoc();
@@ -25,7 +26,15 @@ if ($buy_status != 1) {
     <title>Learn</title>
 </head>
 <body>
-    <h2>Learning Content</h2>
-    <p>Here is the learning content for the purchased product.</p>
+    <h2>Learn</h2>
+    <?php
+    $sql = "SELECT first_name FROM users WHERE id = $user_id";
+    $result = $conn->query($sql);
+    $row = $result->fetch_assoc();
+    $first_name = $row['first_name'];
+    echo "<p>Welcome, $first_name!</p>";
+    ?>
+    <p>You have access to the learning materials.</p>
+    <a href="logout.php">Logout</a>
 </body>
 </html>
