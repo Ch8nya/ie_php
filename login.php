@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 require_once 'config.php';
 
@@ -17,14 +18,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($result->num_rows == 1) {
         $row = $result->fetch_assoc();
         $_SESSION['user_id'] = $row['id'];
+        $_SESSION['signup_success'] = true; // Add this line
         header("Location: index.php");
         exit();
     } else {
         $error = "Invalid email or password";
     }
 }
-?>
 
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,7 +34,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 <body>
     <h2>Login</h2>
-    <?php if (isset($error)) { echo "<p>$error</p>"; } ?>
+    <?php
+    if (isset($error)) {
+        echo "<p>$error</p>";
+    } elseif (isset($_SESSION['signup_success'])) {
+        echo "<p>Signup successful. Please login.</p>";
+        unset($_SESSION['signup_success']);
+    }
+    ?>
     <form method="POST" action="">
         <label>Email:</label>
         <input type="email" name="email" required><br>
