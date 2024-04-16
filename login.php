@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         class="navigation-item w-nav-link">HIRE INTERNS</a><a href="Contact.html"
                         class="navigation-item w-nav-link">CONTACT US</a><a href="About.html"
                         class="navigation-item highlight w-nav-link">ABOUT</a>
-                    <div class="menu-div-block"><a href="SignUp.html" class="button signup-btn w-inline-block">
+                    <div class="menu-div-block"><a href="signup.php" class="button signup-btn w-inline-block">
                             <div class="signup-text"><strong>SIGNUP</strong></div>
                         </a><a href="Login.html" aria-current="page" class="button login w-inline-block w--current">
                             <div class="login-text"><strong>LOGIN</strong></div>
@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         src="https://assets-global.website-files.com/660eaa71aa6222fb22563027/660eaa71aa6222fb22563122_menu-icon.png"
                         width="22" alt="" class="menu-icon" /></div>
             </div>
-            <div class="div-block"><a href="SignUp.html" class="button signup-btn w-inline-block">
+            <div class="div-block"><a href="signup.php" class="button signup-btn w-inline-block">
                     <div class="signup-text"><strong>SIGNUP</strong></div>
                 </a><a href="Login.html" aria-current="page" class="button login w-inline-block w--current">
                     <div class="login-text"><strong>LOGIN</strong></div>
@@ -79,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <input class="form-field w-input" maxlength="256" name="password" placeholder="Password" type="password" required="" />
                 <input type="submit" data-wait="Please wait..." class="form-field create-acc-btn w-button" value="Login" />
             </form>
-            <div class="text-block-7 login-text">Don't have an account? <a href="SignUp.html" class="signup-link"> Signup</a></div>
+            <div class="text-block-7 login-text">Don't have an account? <a href="signup.php" class="signup-link"> Signup</a></div>
         </div>
     </div>
         <div class="footer">
