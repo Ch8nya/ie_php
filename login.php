@@ -72,14 +72,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div class="div-block-20">
         <div class="form-block w-form">
             <h1 class="heading">Login</h1>
-            <div class="text-block-7">Log into your account in seconds</div>
+            <div class="text-block-7">Log into your account.</div>
             <?php if (!empty($error)) { echo "<div class='login-error w-form-fail'><div>$error</div></div>"; } ?>
             <form id="email-form" name="email-form" data-name="Email Form" method="POST" class="loginform">
                 <input class="form-field w-input" maxlength="256" name="email" placeholder="Email Address" type="email" required="" />
                 <input class="form-field w-input" maxlength="256" name="password" placeholder="Password" type="password" required="" />
                 <input type="submit" data-wait="Please wait..." class="form-field create-acc-btn w-button" value="Login" />
             </form>
-            <div class="text-block-7 login-text">Don't have an account? <a href="SignUp.html" class="signup-link">Signup</a></div>
+            <div class="text-block-7 login-text">Don't have an account? <a href="SignUp.html" class="signup-link"> Signup</a></div>
         </div>
     </div>
         <div class="footer">
