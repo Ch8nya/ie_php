@@ -3806,7 +3806,7 @@ figcaption {
 .signup-link {
   color: #7754f6;
   align-self: center;
-  margin-left: 1%;
+  padding-left: 5px;
   margin-bottom: 2%;
   font-weight: 600;
   text-decoration: none;
