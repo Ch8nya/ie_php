@@ -88,7 +88,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="text-block-7 login-text">Already a member? <a href="login.php" class="login-link">Login</a></div>
         </div>
     </div>
-
+    <div id="successPopup" style="display:none; position: fixed; top: 20%; left: 50%; transform: translate(-50%, -50%); background-color: white; padding: 20px; z-index: 100; border: 2px solid #000; border-radius: 5px;">
+    <p>Account Created Successfully. Redirecting to login...</p>
+</div>
        <div class="footer">
         <div class="div-block-16"><a href="/" aria-current="page" class="link w--current">InternEase</a><a href="About.html"
                 class="link-text">About Us</a><a href="Contact.html" class="link-text">Contact Us</a><a href="API Disclosure.html"
