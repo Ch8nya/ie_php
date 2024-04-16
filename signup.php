@@ -15,6 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $sql = "INSERT INTO users (first_name, last_name, email, password, buy_status) VALUES ('$first_name', '$last_name', '$email', '$password', 0)";
     if ($conn->query($sql) === TRUE) {
+        $_SESSION['signup_success'] = "Signup successful, now login here.";
         header("Location: login.php");
         exit();
     } else {
