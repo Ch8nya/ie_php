@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <div class="menu-div-block"><a href="SignUp.html" aria-current="page"
                             class="button signup-btn w-inline-block w--current">
                             <div class="signup-text"><strong>SIGNUP</strong></div>
-                        </a><a href="Login.html" class="button login w-inline-block">
+                        </a><a href="login.php" class="button login w-inline-block">
                             <div class="login-text"><strong>LOGIN</strong></div>
                         </a></div>
                 </nav>
@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="div-block"><a href="SignUp.html" aria-current="page"
                     class="button signup-btn w-inline-block w--current">
                     <div class="signup-text"><strong>SIGNUP</strong></div>
-                </a><a href="Login.html" class="button login w-inline-block">
+                </a><a href="login.php" class="button login w-inline-block">
                     <div class="login-text"><strong>LOGIN</strong></div>
                 </a></div>
         </div>
@@ -85,7 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </label>
                 <input type="submit" data-wait="Please wait..." class="form-field create-acc-btn w-button" value="Create Account" />
             </form>
-            <div class="text-block-7 login-text">Already a member? <a href="Login.html" class="login-link">Login</a></div>
+            <div class="text-block-7 login-text">Already a member? <a href="login.php" class="login-link">Login</a></div>
         </div>
     </div>
 
