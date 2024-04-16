@@ -3772,6 +3772,7 @@ figcaption {
 .login-link {
   color: #7754f6;
   align-self: center;
+  padding-left: 5px;
   margin-bottom: 2%;
   font-weight: 600;
   text-decoration: none;
