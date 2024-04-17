@@ -60,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                        class="navigation-item highlight w-nav-link">ABOUT</a>
                    <div class="menu-div-block"><a href="signup.php" class="button signup-btn w-inline-block">
                            <div class="signup-text"><strong>SIGNUP</strong></div>
-                       </a><a href="Login.html" aria-current="page" class="button login w-inline-block w--current">
+                       </a><a href="login.php" aria-current="page" class="button login w-inline-block w--current">
                            <div class="login-text"><strong>LOGIN</strong></div>
                        </a></div>
                </nav>
@@ -70,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
            </div>
            <div class="div-block"><a href="signup.php" class="button signup-btn w-inline-block">
                    <div class="signup-text"><strong>SIGNUP</strong></div>
-               </a><a href="Login.html" aria-current="page" class="button login w-inline-block w--current">
+               </a><a href="login.php" aria-current="page" class="button login w-inline-block w--current">
                    <div class="login-text"><strong>LOGIN</strong></div>
                </a></div>
        </div>
