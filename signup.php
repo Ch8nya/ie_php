@@ -80,9 +80,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <input class="form-field w-input" maxlength="256" name="email" data-name="Email" placeholder="Email Address:" type="email" id="email" required="" />
                 <input class="form-field w-input" maxlength="256" name="password" data-name="Password" placeholder="Create Password:" type="password" id="Password" required="" />
                 <label class="w-checkbox terms-checkbox">
-                    <input type="checkbox" name="checkbox" id="checkbox" data-name="Checkbox" class="w-checkbox-input checkbox" />
-                    <span class="checkbox-label w-form-label" for="checkbox">I agree to the <a href="terms.php">terms</a> and <a href="privpoli.php">privacy policy</span>
-                </label>
+    <input type="checkbox" name="checkbox" id="checkbox" data-name="Checkbox" class="w-checkbox-input checkbox" />
+    <span class="checkbox-label w-form-label" for="checkbox">I agree to the <a href="terms.php">terms</a> and <a href="privpoli.php">privacy policy</a></span>
+</label>
+
                 <input type="submit" data-wait="Please wait..." class="form-field create-acc-btn w-button" value="Create Account" />
             </form>
             <div class="text-block-7 login-text">Already a member? <a href="login.php" class="login-link">Login</a></div>
