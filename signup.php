@@ -82,8 +82,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <label class="w-checkbox terms-checkbox" style="display: flex; align-items: center;">
     <input type="checkbox" name="checkbox" id="checkbox" data-name="Checkbox" class="w-checkbox-input checkbox" />
     <span class="checkbox-label w-form-label" for="checkbox" style="margin-left: 5px;">
-        I agree to the <a href="tc.php" target="_blank">Terms</a> and <a href="pp.php" target="_blank">Privacy Policy</a>
-    </span>
+    I agree to the <a href="tc.php" target="_blank">Terms</a> &nbsp;and&nbsp; <a href="pp.php" target="_blank">Privacy Policy</a>
+</span>
 </label>
 
 
