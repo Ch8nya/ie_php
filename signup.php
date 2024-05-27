@@ -80,7 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <input class="form-field w-input" maxlength="256" name="email" data-name="Email" placeholder="Email Address:" type="email" id="email" required="" />
                 <input class="form-field w-input" maxlength="256" name="password" data-name="Password" placeholder="Create Password:" type="password" id="Password" required="" />
                 <label class="w-checkbox terms-checkbox" style="display: flex; align-items: center;">
-    <input type="checkbox" name="checkbox" id="checkbox" data-name="Checkbox" class="w-checkbox-input checkbox" />
+    <input type="checkbox" required name="checkbox" id="checkbox" data-name="Checkbox" class="w-checkbox-input checkbox" />
     <span class="checkbox-label w-form-label" for="checkbox" style="margin-left: 5px;">
     I agree to the <a href="tc.php" target="_blank">Terms</a> &nbsp;and&nbsp; <a href="pp.php" target="_blank">Privacy Policy</a>
 </span>
