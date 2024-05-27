@@ -79,10 +79,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <input class="form-field w-input" maxlength="256" name="last_name" data-name="Last_Name" placeholder="Last Name:" type="text" id="Last_Name" required="" />
                 <input class="form-field w-input" maxlength="256" name="email" data-name="Email" placeholder="Email Address:" type="email" id="email" required="" />
                 <input class="form-field w-input" maxlength="256" name="password" data-name="Password" placeholder="Create Password:" type="password" id="Password" required="" />
-                <label class="w-checkbox terms-checkbox">
+                <label class="w-checkbox terms-checkbox" style="display: flex; align-items: center;">
     <input type="checkbox" name="checkbox" id="checkbox" data-name="Checkbox" class="w-checkbox-input checkbox" />
-    <span class="checkbox-label w-form-label" for="checkbox">I agree to the <a href="terms.php">terms</a> and <a href="privpoli.php">privacy policy</a></span>
+    <span class="checkbox-label w-form-label" for="checkbox" style="margin-left: 5px;">
+        I agree to the <a href="tc.php" target="_blank" style="text-decoration: none; color: inherit;">Terms</a> and <a href="pp.php" target="_blank" style="text-decoration: none; color: inherit;">Privacy Policy</a>
+    </span>
 </label>
+
+
 
                 <input type="submit" data-wait="Please wait..." class="form-field create-acc-btn w-button" value="Create Account" />
             </form>
