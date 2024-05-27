@@ -23912,31 +23912,7 @@
             btn.val(wait);
           }
         }
-        function findFields(form, result) {
-          var status = null;
-          result = result || {};
-          form.find(':input:not([type="submit"]):not([type="file"])').each(function(i, el) {
-            var field = $(el);
-            var type = field.attr("type");
-            var name2 = field.attr("data-name") || field.attr("name") || "Field " + (i + 1);
-            name2 = encodeURIComponent(name2);
-            var value2 = field.val();
-            if (type === "checkbox") {
-              value2 = field.is(":checked");
-            } else if (type === "radio") {
-              if (result[name2] === null || typeof result[name2] === "string") {
-                return;
-              }
-              value2 = form.find('input[name="' + field.attr("name") + '"]:checked').val() || null;
-            }
-            if (typeof value2 === "string") {
-              value2 = $.trim(value2);
-            }
-            result[name2] = value2;
-            status = status || getStatus(field, type, name2, value2);
-          });
-          return status;
-        }
+        
         function findFileUploads(form) {
           var result = {};
           form.find(':input[type="file"]').each(function(i, el) {
@@ -23967,21 +23943,44 @@
           }, {});
           return cookies;
         }
-        function getStatus(field, type, name2, value2) {
-          var status = null;
-         if (field.attr("required")) {
-            if (!value2) {
-              status = "Please fill out the required field: " + name2;
-            } else if (emailField.test(field.attr("type"))) {
-              if (!emailValue.test(value2)) {
-                status = "Please enter a valid email address for: " + name2;
-              }
-            }
-          } else if (name2 === "g-recaptcha-response" && !value2) {
-            status = "Please confirm you\u2019re not a robot.";
-          }
-          return status;
-        }
+        // JavaScript code
+const form = document.getElementById('email-form');
+
+form.addEventListener('submit', handleSubmit, true);
+
+function handleSubmit(event) {
+  event.preventDefault();
+  event.stopPropagation();
+
+  const formData = new FormData(form);
+  const formDataObj = Object.fromEntries(formData);
+
+  // You can now send the formDataObj to the server using AJAX or fetch
+  // or perform client-side validation before submitting the form
+
+  // Example: Send the form data to the server using fetch
+  fetch('path/to/server-side-script.php', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(formDataObj)
+  })
+  .then(response => {
+    // Handle the server response
+    if (response.ok) {
+      // Form submission successful
+      console.log('Form submitted successfully');
+    } else {
+      // Form submission failed
+      console.error('Form submission failed');
+    }
+  })
+  .catch(error => {
+    // Handle any errors
+    console.error('Error:', error);
+  });
+}
         function exportedSubmitWebflow(data2) {
           preventDefault(data2);
           afterSubmit(data2);
