@@ -23969,9 +23969,7 @@
         }
         function getStatus(field, type, name2, value2) {
           var status = null;
-          if (type === "password") {
-            status = "Passwords cannot be submitted.";
-          } else if (field.attr("required")) {
+         if (field.attr("required")) {
             if (!value2) {
               status = "Please fill out the required field: " + name2;
             } else if (emailField.test(field.attr("type"))) {
