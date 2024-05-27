@@ -126,5 +126,39 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </script>
     <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=660eaa71aa6222fb22563027" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <script src="script.js" type="text/javascript"></script>
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var form = document.getElementById('email-form');
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                event.stopPropagation();
+
+                // Collect form data
+                var formData = new FormData(form);
+                var payload = {};
+                formData.forEach(function(value, key) {
+                    payload[key] = value;
+                });
+
+                // Submit form data via AJAX
+                $.ajax({
+                    url: form.action,
+                    type: 'POST',
+                    data: payload,
+                    success: function(response) {
+                        // Handle success, show popup or redirect
+                        document.getElementById('successPopup').style.display = 'block';
+                        setTimeout(function() {
+                            window.location.href = 'login.php';
+                        }, 3000);
+                    },
+                    error: function() {
+                        // Handle error
+                        alert('There was an error processing your request.');
+                    }
+                });
+            }, true);
+        });
+    </script>
 </body>
 </html>
