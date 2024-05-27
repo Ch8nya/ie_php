@@ -19,17 +19,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
    $email = $_POST['email'];
    $password = $_POST['password'];
 
-   $sql = "SELECT id FROM users WHERE email = '$email' AND password = '$password'";
-   $result = $conn->query($sql);
+   // Prepare and execute the SQL statement
+   $stmt = $conn->prepare("SELECT id FROM users WHERE email = ? AND password = ?");
+   $stmt->bind_param("ss", $email, $password);
+   $stmt->execute();
+   $stmt->store_result();
 
-   if ($result->num_rows == 1) {
-       $row = $result->fetch_assoc();
-       $_SESSION['user_id'] = $row['id'];
+   if ($stmt->num_rows == 1) {
+       $stmt->bind_result($id);
+       $stmt->fetch();
+       $_SESSION['user_id'] = $id;
        header("Location: index.php");
        exit();
    } else {
        $error = "Invalid email or password";
    }
+
+   $stmt->close();
 }
 ?>
 <!DOCTYPE html>
@@ -84,7 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                echo "<div class='signup-success w-form-done'><div>$signupSuccessMsg</div></div>"; 
            }
            if (!empty($error)) { 
-               echo "<div class='login-error w-form-fail'><div>$error</div></div>"; 
+               echo "<script type='text/javascript'>var invalidCredentials = true;</script>";
            } 
            ?>
            <form id="email-form" name="email-form" data-name="Email Form" method="POST" class="loginform">
@@ -115,5 +121,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
    </div>
     <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=660eaa71aa6222fb22563027" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <script src="script.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        if (typeof invalidCredentials !== 'undefined' && invalidCredentials) {
+            alert('Invalid Credentials!');
+        }
+    </script>
 </body>
 </html>
