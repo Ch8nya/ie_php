@@ -4302,6 +4302,10 @@ figcaption {
   overflow: hidden;
 }
 
+a {
+    display: inline;
+}
+
 .table_cell {
   border: 1px solid #000;
   align-self: center;
