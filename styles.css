@@ -569,6 +569,11 @@ textarea.w-input, textarea.w-select {
   margin-bottom: 0;
   font-weight: normal;
   display: inline-block;
+  color: #ccc;
+}
+
+.w-form-label a {
+  color: #ccc;
 }
 
 .w-radio {
@@ -2095,6 +2100,8 @@ textarea.w-input, textarea.w-select {
   padding-left: 20px;
   display: block;
 }
+
+
 
 .w-checkbox:before {
   content: " ";
@@ -3737,10 +3744,6 @@ figcaption {
   align-self: center;
   font-size: 16px;
   line-height: 28px;
-}
-
-checkbox-label a {
-  padding-right: 0.1 rem;
 }
 
 .checkbox {
