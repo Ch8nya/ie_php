@@ -3739,6 +3739,10 @@ figcaption {
   line-height: 28px;
 }
 
+checkbox-label a {
+  padding-right: 0.1 rem;
+}
+
 .checkbox {
   cursor: auto;
   background-color: rgba(119, 84, 246, 0);
