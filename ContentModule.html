@@ -309,48 +309,48 @@
     <script src="script.js"
         type="text/javascript"></script>
         <script>
-            // Get references to the relevant HTML elements
-            const nextButton = document.querySelector('.button-3');
-            const contentDiv = document.querySelector('.content');
-          
-            // Initialize the current lesson
-            let currentLesson = 1;
-          
-            // Attach a click event listener to the "Next" button
-            nextButton.addEventListener('click', loadNextLesson);
-          
-            // Function to load a specific lesson
-            function loadLesson(lessonNumber) {
-              // Construct the file path for the specified lesson
-              const lessonFilePath = `content/module1/lesson{lessonNumber}.html`;
-          
-              // Send an AJAX request to load the lesson HTML file
-              fetch(lessonFilePath)
-                .then(response => response.text())
-                .then(data => {
-                  // Update the lesson content container with the new content
-                  contentDiv.innerHTML = data;
-                })
-                .catch(error => {
-                  console.error('Error loading lesson:', error);
-                });
-            }
-          
-            // Function to load the next lesson
-            function loadNextLesson() {
-              // Increment the lesson number
-              currentLesson++;
-          
-              // Load the next lesson
-              loadLesson(currentLesson);
-            }
-          
-            // Prefetch the first lesson when the page loads
-            document.addEventListener('DOMContentLoaded', () => {
-              loadLesson(currentLesson);
-            });
-          </script>
-          
+  // Get references to the relevant HTML elements
+  const nextButton = document.querySelector('.button-3');
+  const contentDiv = document.querySelector('.content');
+
+  // Initialize the current lesson
+  let currentLesson = 1;
+  const currentModule = 1; // Assuming you're starting with module 1
+
+  // Attach a click event listener to the "Next" button
+  nextButton.addEventListener('click', loadNextLesson);
+
+  // Function to load a specific lesson
+  function loadLesson(moduleNumber, lessonNumber) {
+    // Construct the file path for the specified lesson
+    const lessonFilePath = `content/module${moduleNumber}/lesson${lessonNumber}.html`;
+
+    // Send an AJAX request to load the lesson HTML file
+    fetch(lessonFilePath)
+      .then(response => response.text())
+      .then(data => {
+        // Update the lesson content container with the new content
+        contentDiv.innerHTML = data;
+      })
+      .catch(error => {
+        console.error('Error loading lesson:', error);
+      });
+  }
+
+  // Function to load the next lesson
+  function loadNextLesson() {
+    // Increment the lesson number
+    currentLesson++;
+
+    // Load the next lesson
+    loadLesson(currentModule, currentLesson);
+  }
+
+  // Prefetch the first lesson when the page loads
+  document.addEventListener('DOMContentLoaded', () => {
+    loadLesson(currentModule, currentLesson);
+  });
+</script>      
           
 </body>
 
