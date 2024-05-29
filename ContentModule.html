@@ -313,9 +313,9 @@
   const nextButton = document.querySelector('.button-3');
   const contentDiv = document.querySelector('.content');
 
-  // Initialize the current lesson
+  // Initialize the current lesson and module
   let currentLesson = 1;
-  const currentModule = 1; // Assuming you're starting with module 1
+  let currentModule = 1;
 
   // Attach a click event listener to the "Next" button
   nextButton.addEventListener('click', loadNextLesson);
@@ -327,13 +327,19 @@
 
     // Send an AJAX request to load the lesson HTML file
     fetch(lessonFilePath)
-      .then(response => response.text())
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`Lesson not found: ${response.status}`);
+        }
+        return response.text();
+      })
       .then(data => {
         // Update the lesson content container with the new content
         contentDiv.innerHTML = data;
       })
       .catch(error => {
         console.error('Error loading lesson:', error);
+        contentDiv.innerHTML = '<p>Lesson not found. Please check the module and lesson numbers.</p>';
       });
   }
 
@@ -342,15 +348,42 @@
     // Increment the lesson number
     currentLesson++;
 
-    // Load the next lesson
-    loadLesson(currentModule, currentLesson);
+    // Check if the next lesson file exists before updating the content
+    const lessonFilePath = `content/module${currentModule}/lesson${currentLesson}.html`;
+
+    fetch(lessonFilePath)
+      .then(response => {
+        if (!response.ok) {
+          // If the next lesson doesn't exist, move to the next module and reset the lesson number
+          currentLesson = 1;
+          currentModule++;
+          // Check the existence of the first lesson in the next module
+          return fetch(`content/module${currentModule}/lesson${currentLesson}.html`);
+        }
+        return response;
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`Lesson not found: ${response.status}`);
+        }
+        return response.text();
+      })
+      .then(data => {
+        // Update the lesson content container with the new content
+        contentDiv.innerHTML = data;
+      })
+      .catch(error => {
+        console.error('Error loading lesson:', error);
+        contentDiv.innerHTML = '<p>Lesson not found. Please check the module and lesson numbers.</p>';
+      });
   }
 
   // Prefetch the first lesson when the page loads
   document.addEventListener('DOMContentLoaded', () => {
     loadLesson(currentModule, currentLesson);
   });
-</script>      
+</script>
+     
           
 </body>
 
