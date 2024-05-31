@@ -130,7 +130,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             resize: vertical;
         }
 
-        button[type="submit"] {
+        button {
             display: block;
             margin: 0 auto;
             padding: 10px 20px;
