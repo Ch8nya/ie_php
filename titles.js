@@ -5,17 +5,16 @@ const titles = {
         lessons: [
           'Lesson 1: Design thinking principles and methodologies',
           'Lesson 2: User-centered design process',
-          'Lesson 3: Empathy mapping and persona development',
           'Lesson 4: User journey mapping',
-          'Lesson 5: Usability testing methods (moderated, unmoderated, remote)'
+          'Lesson 5: Usability testing methods'
         ]
       },
       {
         title: 'Information Architecture',
         lessons: [
-          'Lesson 1: Content organization and navigation',
+          'Lesson 1: Contenxtual design and navigation',
           'Lesson 2: Card sorting and tree testing',
-          'Lesson 3: Site mapping and wireframing'
+          'Lesson 3: Site mapping'
         ]
       },
       {
@@ -29,8 +28,8 @@ const titles = {
       {
         title: 'Visual Design and Branding',
         lessons: [
-          'Lesson 1: Typography and color theory',
-          'Lesson 2: UI design principles and patterns'
+          'Lesson 1: Color theory',
+          'Lesson 2: Typography'
         ]
       },
       {
