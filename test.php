@@ -3,20 +3,27 @@ session_start();
 require_once 'config.php';
 
 if (!isset($_SESSION['user_id'])) {
-   header("Location: login.php");
-   exit();
+    header("Location: login.php");
+    exit();
 }
 
 $user_id = $_SESSION['user_id'];
 
-$sql = "SELECT buy_status FROM users WHERE id = $user_id";
+$sql = "SELECT buy_status, score FROM users WHERE id = $user_id";
 $result = $conn->query($sql);
 $row = $result->fetch_assoc();
 $buy_status = $row['buy_status'];
+$existing_score = $row['score'];
 
 if ($buy_status != 1) {
-   header("Location: buy.php");
-   exit();
+    header("Location: buy.php");
+    exit();
+}
+
+if ($existing_score !== null) {
+    // User has already taken the test, redirect to apply.php
+    header("Location: apply.php");
+    exit();
 }
 
 $grand_total_marks = null;
@@ -52,9 +59,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
    $grand_total_marks = $total_marks + $random_number;
 
-   // Output the grand total marks as a JSON response
-   echo json_encode(['score' => $grand_total_marks]);
-   exit();
+   // Update the score in the database
+    $update_score_sql = "UPDATE users SET score = $grand_total_marks WHERE id = $user_id";
+    if ($conn->query($update_score_sql) === TRUE) {
+        // Output the grand total marks as a JSON response
+        echo json_encode(['score' => $grand_total_marks, 'redirect' => true]);
+    } else {
+        echo "Error updating score: " . $conn->error;
+    }
+
+    exit();
 }
 ?>
 
@@ -273,21 +287,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
 
     <script>
-        document.querySelector('form').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent the form from submitting the traditional way
+    document.querySelector('form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the form from submitting the traditional way
 
-            const formData = new FormData(this);
-            fetch('', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                // Display the score on the current page
-                document.getElementById('score').textContent = 'Your score: ' + data.score;
-            })
-            .catch(error => console.error('Error:', error));
-        });
-    </script>
+        const formData = new FormData(this);
+        fetch('', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Display the score on the current page
+            document.getElementById('score').textContent = 'Your score: ' + data.score;
+
+            if (data.redirect) {
+                // Show the popup and redirect to apply.php
+                alert("Congratulations! Redirecting you to the Apply Internship Page");
+                window.location.href = "apply.php";
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    });
+</script>
 </body>
 </html>
