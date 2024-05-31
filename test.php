@@ -283,31 +283,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <button type="submit">Submit</button>
            
     <h2 id="score"></h2>
+            <button onclick="window.location='apply.php'">Apply for Internship</button>
         </form>
     </div>
 
     <script>
-    document.querySelector('form').addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevent the form from submitting the traditional way
+        document.querySelector('form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting the traditional way
 
-        const formData = new FormData(this);
-        fetch('', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-            // Display the score on the current page
-            document.getElementById('score').textContent = 'Your score: ' + data.score;
-
-            if (data.redirect) {
-                // Show the popup and redirect to apply.php
-                alert("Congratulations! Redirecting you to the Apply Internship Page");
-                window.location.href = "apply.php";
-            }
-        })
-        .catch(error => console.error('Error:', error));
-    });
-</script>
+            const formData = new FormData(this);
+            fetch('', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Display the score on the current page
+                document.getElementById('score').textContent = 'Your score: ' + data.score;
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
 </body>
 </html>
