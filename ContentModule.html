@@ -279,7 +279,29 @@
       });
   }
 
-  // Function to load the next lesson
+// Function to save user progress
+function saveProgress(moduleNumber, lessonNumber) {
+  fetch('save_progress.php', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ moduleNumber: moduleNumber, lessonNumber: lessonNumber })
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`Error saving progress: ${response.statusText}`);
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log('Progress saved successfully:', data);
+  })
+  .catch(error => {
+    console.error('Error saving progress:', error);
+  });
+}
+
   // Function to load the next lesson
 function loadNextLesson() {
   // Increment the lesson number
@@ -312,6 +334,9 @@ function loadNextLesson() {
       const lessonTitle = titles.modules[currentModule - 1].lessons[currentLesson - 1];
       document.querySelector('.heading-2').textContent = moduleTitle;
       document.querySelector('.sub-heading').textContent = lessonTitle;
+
+        // Save progress
+      saveProgress(currentModule, currentLesson);
     })
     .catch(error => {
       console.error('Error loading lesson:', error);
@@ -319,16 +344,32 @@ function loadNextLesson() {
     });
 }
 
-  // Prefetch the first lesson when the page loads
-document.addEventListener('DOMContentLoaded', () => {
-  loadLesson(currentModule, currentLesson);
+  document.addEventListener('DOMContentLoaded', () => {
+  fetch('get_progress.php')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`Error fetching progress: ${response.statusText}`);
+      }
+      return response.json();
+    })
+    .then(data => {
+      currentModule = data.moduleNumber || 1;
+      currentLesson = data.lessonNumber || 1;
+      loadLesson(currentModule, currentLesson);
 
-  // Update the module and lesson titles
-  const moduleTitle = titles.modules[currentModule - 1].title;
-  const lessonTitle = titles.modules[currentModule - 1].lessons[currentLesson - 1];
-  document.querySelector('.heading-2').textContent = moduleTitle;
-  document.querySelector('.sub-heading').textContent = lessonTitle;
+      // Update the module and lesson titles
+      const moduleTitle = titles.modules[currentModule - 1].title;
+      const lessonTitle = titles.modules[currentModule - 1].lessons[currentLesson - 1];
+      document.querySelector('.heading-2').textContent = moduleTitle;
+      document.querySelector('.sub-heading').textContent = lessonTitle;
+    })
+    .catch(error => {
+      console.error('Error loading progress:', error);
+      // Fallback to loading the first lesson if there is an error
+      loadLesson(currentModule, currentLesson);
+    });
 });
+
 
 // Function to handle sidebar and accordion menu clicks
 function handleMenuClick(event) {
@@ -370,8 +411,6 @@ document.querySelectorAll('.module-navigator .w-dropdown-link').forEach(link => 
 document.querySelectorAll('.menumob .w-dropdown-link').forEach(link => {
     link.addEventListener('click', handleMenuClick);
 });
-
-
 
 </script>
      
