@@ -1,7 +1,7 @@
 const titles = {
     modules: [
       {
-        title: 'Foundations of User Experience Design',
+        title: 'Module 1: Foundations of User Experience Design',
         lessons: [
           'Lesson 1: Design thinking principles and methodologies',
           'Lesson 2: User-centered design process',
@@ -10,7 +10,7 @@ const titles = {
         ]
       },
       {
-        title: 'Information Architecture',
+        title: 'Module 2: Information Architecture',
         lessons: [
           'Lesson 1: Contenxtual design and navigation',
           'Lesson 2: Card sorting and tree testing',
@@ -18,7 +18,7 @@ const titles = {
         ]
       },
       {
-        title: 'Interaction Design',
+        title: 'Module 3: Interaction Design',
         lessons: [
           'Lesson 1: Principles of human-computer interaction',
           'Lesson 2: Designing intuitive interfaces and interaction patterns',
@@ -26,21 +26,21 @@ const titles = {
         ]
       },
       {
-        title: 'Visual Design and Branding',
+        title: 'Module 4: Visual Design and Branding',
         lessons: [
           'Lesson 1: Color theory',
           'Lesson 2: Typography'
         ]
       },
       {
-        title: 'Mobile and Responsive Design',
+        title: 'Module 5: Mobile and Responsive Design',
         lessons: [
           'Lesson 1: Mobile-first design approach',
           'Lesson 2: Responsive design techniques and strategies'
         ]
       },
       {
-        title: 'Data Visualization and Information Design',
+        title: 'Module 6: Data Visualization and Information Design',
         lessons: [
           'Lesson 1: Data visualization principles and best practices',
           'Lesson 2: Dashboards',
@@ -48,7 +48,7 @@ const titles = {
         ]
       },
       {
-        title: 'Design Systems and Pattern Libraries',
+        title: 'Module 7: Design Systems and Pattern Libraries',
         lessons: [
           'Lesson 1: Atomic design principles',
           'Lesson 2: Creating and maintaining design systems'
