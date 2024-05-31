@@ -20,15 +20,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
    $password = $_POST['password'];
 
    // Prepare and execute the SQL statement
-   $stmt = $conn->prepare("SELECT id FROM users WHERE email = ? AND password = ?");
+   $stmt = $conn->prepare("SELECT id, moduleNumber, lessonNumber FROM users WHERE email = ? AND password = ?");
    $stmt->bind_param("ss", $email, $password);
    $stmt->execute();
    $stmt->store_result();
 
    if ($stmt->num_rows == 1) {
-       $stmt->bind_result($id);
+       $stmt->bind_result($id, $moduleNumber, $lessonNumber);
        $stmt->fetch();
        $_SESSION['user_id'] = $id;
+
+       // Save the moduleNumber and lessonNumber in session
+       $_SESSION['moduleNumber'] = $moduleNumber;
+       $_SESSION['lessonNumber'] = $lessonNumber;
+
        header("Location: index.php");
        exit();
    } else {
