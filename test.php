@@ -19,6 +19,8 @@ if ($buy_status != 1) {
    exit();
 }
 
+$grand_total_marks = null;
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
    $correct_answers = [
        1 => 'd',
@@ -49,10 +51,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
    }
 
    $grand_total_marks = $total_marks + $random_number;
-
-   echo "<h2 id='score'>Your Grand Total Marks: $grand_total_marks / 60</h2>";
 }
-?>    
+?>
+   
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -262,6 +263,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             <button type="submit">Submit</button>
         </form>
+    <h2 id="score"></h2>
     </div>
+
+    <script>
+        document.getElementById('testForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting the traditional way
+
+            let formData = new FormData(this);
+            fetch('', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                // Get the score from the PHP output
+                let parser = new DOMParser();
+                let doc = parser.parseFromString(data, 'text/html');
+                let scoreText = doc.querySelector('#score').innerText;
+
+                // Display the score on the current page
+                document.getElementById('score').innerText = scoreText;
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
 </body>
 </html>
