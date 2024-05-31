@@ -19,26 +19,6 @@ if ($buy_status != 1) {
     exit();
 }
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!DOCTYPE html>
 <!-- This site was created in Webflow. https://www.webflow.com --><!-- Last Published: Tue Apr 16 2024 10:48:33 GMT+0000 (Coordinated Universal Time) -->
 <html data-wf-domain="ie-site-final.webflow.io" data-wf-page="660eaa71aa6222fb22563105"
