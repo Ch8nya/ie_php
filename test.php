@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
    $grand_total_marks = $total_marks + $random_number;
 
-   echo "<h2>Your Grand Total Marks: $grand_total_marks / 60</h2>";
+   echo "<h2 id='score'>Your Grand Total Marks: $grand_total_marks / 60</h2>";
 }
 ?>    
 <!DOCTYPE html>
@@ -119,6 +119,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             border: none;
             border-radius: 5px;
             cursor: pointer;
+        }
+
+       #score {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
         }
 
         @media (max-width: 600px) {
