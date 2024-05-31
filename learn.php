@@ -134,10 +134,8 @@ if ($buy_status != 1) {
             <div class="menu-button2 w-nav-button"><img
                     src="https://assets-global.website-files.com/660eaa71aa6222fb22563027/660eaa71aa6222fb22563122_menu-icon.png"
                     width="22" alt="" class="menu-icon" /></div>
-            <div class="div-block-32"><img
-                    src="https://assets-global.website-files.com/660eaa71aa6222fb22563027/6617cfc9697e223befcc78d5_icons8-circle-30.png"
-                    loading="lazy" alt="" class="image-10" />
-                <div class="progress">Your Progress</div><img
+            <div class="div-block-32">
+                <div class="progress"><span id="moduleProgress"></span>/7 Your Progress</div><img
                     src="https://assets-global.website-files.com/660eaa71aa6222fb22563027/66183f175b94606c96dcdc4a_icons8-user-30%20(1).png"
                     loading="lazy" alt="" class="image-12" />
                 <div class="uname"><?php   $sql = "SELECT first_name FROM users WHERE id = $user_id";
@@ -379,12 +377,28 @@ function loadNextLesson() {
 
       // Save progress
       saveProgress(currentModule, currentLesson);
+      updateModuleProgress();
     })
     .catch(error => {
       console.error('Error loading lesson:', error);
       contentDiv.innerHTML = '<p>Lesson not found. Please check the module and lesson numbers.</p>';
     });
 }
+
+    // Function to fetch and update module progress
+function updateModuleProgress() {
+    fetch('get_progress.php')
+        .then(response => response.json())
+        .then(data => {
+            const moduleProgressSpan = document.getElementById('moduleProgress');
+            moduleProgressSpan.textContent = data.moduleNumber;
+        })
+        .catch(error => {
+            console.error('Error fetching module progress:', error);
+        });
+}
+            // Call the function on page load
+document.addEventListener('DOMContentLoaded', updateModuleProgress);
 
   document.addEventListener('DOMContentLoaded', () => {
   fetch('get_progress.php')
@@ -441,6 +455,7 @@ function handleMenuClick(event) {
 
     // Save progress
     saveProgress(currentModule, currentLesson);
+    updateModuleProgress();
   } else {
     console.error('Invalid ID format. Expected format: "module{moduleNumber}-lesson{lessonNumber}"');
   }
