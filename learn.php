@@ -303,6 +303,29 @@ if ($buy_status != 1) {
       });
   }
 
+    // Function to save user progress
+function saveProgress(moduleNumber, lessonNumber) {
+  fetch('save_progress.php', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ moduleNumber: moduleNumber, lessonNumber: lessonNumber })
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`Error saving progress: ${response.statusText}`);
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log('Progress saved successfully:', data);
+  })
+  .catch(error => {
+    console.error('Error saving progress:', error);
+  });
+}
+
   // Updated function to load the next lesson
 function loadNextLesson() {
   // Increment the lesson number
