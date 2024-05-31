@@ -4,11 +4,80 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test Page</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Center the container */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .test-container {
+            max-width: 800px;
+            width: 100%;
+            padding: 20px;
+            background-color: #f8f8f8;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .question {
+            margin-bottom: 30px;
+        }
+
+        .question label {
+            display: block;
+            text-align: center;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .question input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        .question textarea {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: vertical;
+        }
+
+        button[type="submit"] {
+            display: block;
+            margin: 0 auto;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 600px) {
+            .test-container {
+                padding: 10px;
+            }
+
+            .question label {
+                font-size: 16px;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="test-container">
-        <h1> Certification Test</h1>
+        <h1>Certification Test</h1>
         <form action="#" method="post">
             <div class="question">
                 <label>1. Which of the following is NOT one of the five phases of the design thinking process?</label><br>
@@ -84,7 +153,7 @@
 
             <div class="question">
                 <label>10. What is the mobile-first approach in responsive web design?</label><br>
-                <input type="radio" name="q10" value="a"> a) Designing for desktop first and then scaling down for mobile<br>
+                <input type="radio" name="q10 value="a"> a) Designing for desktop first and then scaling down for mobile<br>
                 <input type="radio" name="q10" value="b"> b) Prioritizing content and functionality for smaller screens first<br>
                 <input type="radio" name="q10" value="c"> c) Focusing solely on designing for tablet devices<br>
                 <input type="radio" name="q10" value="d"> d) Creating separate websites for mobile and desktop users<br>
