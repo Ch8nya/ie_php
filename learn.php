@@ -303,8 +303,7 @@ if ($buy_status != 1) {
       });
   }
 
-  // Function to load the next lesson
-  // Function to load the next lesson
+  // Updated function to load the next lesson
 function loadNextLesson() {
   // Increment the lesson number
   currentLesson++;
@@ -336,6 +335,9 @@ function loadNextLesson() {
       const lessonTitle = titles.modules[currentModule - 1].lessons[currentLesson - 1];
       document.querySelector('.heading-2').textContent = moduleTitle;
       document.querySelector('.sub-heading').textContent = lessonTitle;
+
+      // Save progress
+      saveProgress(currentModule, currentLesson);
     })
     .catch(error => {
       console.error('Error loading lesson:', error);
@@ -343,46 +345,64 @@ function loadNextLesson() {
     });
 }
 
-  // Prefetch the first lesson when the page loads
-document.addEventListener('DOMContentLoaded', () => {
-  loadLesson(currentModule, currentLesson);
+  document.addEventListener('DOMContentLoaded', () => {
+  fetch('get_progress.php')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`Error fetching progress: ${response.statusText}`);
+      }
+      return response.json();
+    })
+    .then(data => {
+      currentModule = data.moduleNumber || 1;
+      currentLesson = data.lessonNumber || 1;
+      loadLesson(currentModule, currentLesson);
 
-  // Update the module and lesson titles
-  const moduleTitle = titles.modules[currentModule - 1].title;
-  const lessonTitle = titles.modules[currentModule - 1].lessons[currentLesson - 1];
-  document.querySelector('.heading-2').textContent = moduleTitle;
-  document.querySelector('.sub-heading').textContent = lessonTitle;
+      // Update the module and lesson titles
+      const moduleTitle = titles.modules[currentModule - 1].title;
+      const lessonTitle = titles.modules[currentModule - 1].lessons[currentLesson - 1];
+      document.querySelector('.heading-2').textContent = moduleTitle;
+      document.querySelector('.sub-heading').textContent = lessonTitle;
+    })
+    .catch(error => {
+      console.error('Error loading progress:', error);
+      // Fallback to loading the first lesson if there is an error
+      loadLesson(currentModule, currentLesson);
+    });
 });
 
-// Function to handle sidebar and accordion menu clicks
+// Updated function to handle menu clicks
 function handleMenuClick(event) {
-    // Prevent the default anchor behavior
-    event.preventDefault();
+  // Prevent the default anchor behavior
+  event.preventDefault();
 
-    // Get the ID of the clicked element
-    const id = event.target.id;
+  // Get the ID of the clicked element
+  const id = event.target.id;
 
-    // Extract moduleNumber and lessonNumber from the ID
-    const match = id.match(/module(\d+)-lesson(\d+)/);
-    if (match) {
-        const moduleNumber = parseInt(match[1]);
-        const lessonNumber = parseInt(match[2]);
+  // Extract moduleNumber and lessonNumber from the ID
+  const match = id.match(/module(\d+)-lesson(\d+)/);
+  if (match) {
+    const moduleNumber = parseInt(match[1]);
+    const lessonNumber = parseInt(match[2]);
 
-        // Load the specified lesson
-        loadLesson(moduleNumber, lessonNumber);
+    // Load the specified lesson
+    loadLesson(moduleNumber, lessonNumber);
 
-        // Update the currentLesson and currentModule
-        currentLesson = lessonNumber;
-        currentModule = moduleNumber;
+    // Update the currentLesson and currentModule
+    currentLesson = lessonNumber;
+    currentModule = moduleNumber;
 
-        // Update the module and lesson titles
-        const moduleTitle = titles.modules[currentModule - 1].title;
-        const lessonTitle = titles.modules[currentModule - 1].lessons[currentLesson - 1];
-        document.querySelector('.heading-2').textContent = moduleTitle;
-        document.querySelector('.sub-heading').textContent = lessonTitle;
-    } else {
-        console.error('Invalid ID format. Expected format: "module{moduleNumber}-lesson{lessonNumber}"');
-    }
+    // Update the module and lesson titles
+    const moduleTitle = titles.modules[currentModule - 1].title;
+    const lessonTitle = titles.modules[currentModule - 1].lessons[currentLesson - 1];
+    document.querySelector('.heading-2').textContent = moduleTitle;
+    document.querySelector('.sub-heading').textContent = lessonTitle;
+
+    // Save progress
+    saveProgress(currentModule, currentLesson);
+  } else {
+    console.error('Invalid ID format. Expected format: "module{moduleNumber}-lesson{lessonNumber}"');
+  }
 }
 
 // Add event listeners to the desktop sidebar links
