@@ -303,27 +303,45 @@ if ($buy_status != 1) {
       });
   }
 
-    // Function to save user progress
-function saveProgress(moduleNumber, lessonNumber) {
-  fetch('save_progress.php', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ moduleNumber: moduleNumber, lessonNumber: lessonNumber })
-  })
-  .then(response => {
-    if (!response.ok) {
-      throw new Error(`Error saving progress: ${response.statusText}`);
-    }
-    return response.json();
-  })
-  .then(data => {
-    console.log('Progress saved successfully:', data);
-  })
-  .catch(error => {
-    console.error('Error saving progress:', error);
-  });
+    function saveProgress(moduleNumber, lessonNumber) {
+  // Fetch the current progress from the server
+  fetch('get_progress.php')
+    .then(response => response.json())
+    .then(data => {
+      const currentModule = data.moduleNumber;
+      const currentLesson = data.lessonNumber;
+
+      // Only update if the new progress is greater
+      if (moduleNumber > currentModule || (moduleNumber === currentModule && lessonNumber > currentLesson)) {
+        return fetch('save_progress.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ moduleNumber: moduleNumber, lessonNumber: lessonNumber })
+        });
+      } else {
+        // If not updating, log a message
+        console.log('Progress not updated: New progress is not greater than current progress.');
+        return Promise.resolve({ ok: true, json: () => ({ status: 'skipped' }) });
+      }
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`Error saving progress: ${response.statusText}`);
+      }
+      return response.json();
+    })
+    .then(data => {
+      if (data.status === 'success') {
+        console.log('Progress saved successfully:', data);
+      } else {
+        console.log('Progress not updated:', data.message || 'Skipped');
+      }
+    })
+    .catch(error => {
+      console.error('Error saving progress:', error);
+    });
 }
 
   // Updated function to load the next lesson
