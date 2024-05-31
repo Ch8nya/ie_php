@@ -5,8 +5,8 @@ const titles = {
         lessons: [
           'Lesson 1: Design thinking principles and methodologies',
           'Lesson 2: User-centered design process',
-          'Lesson 4: User journey mapping',
-          'Lesson 5: Usability testing methods'
+          'Lesson 3: User journey mapping',
+          'Lesson 4: Usability testing methods'
         ]
       },
       {
