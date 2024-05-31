@@ -51,8 +51,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
    }
 
    $grand_total_marks = $total_marks + $random_number;
+
+   // Output the grand total marks as a JSON response
+   echo json_encode(['score' => $grand_total_marks]);
+   exit();
 }
 ?>
+
    
 <!DOCTYPE html>
 <html lang="en">
@@ -275,15 +280,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 method: 'POST',
                 body: formData
             })
-            .then(response => response.text())
+            .then(response => response.json())
             .then(data => {
-                // Get the score from the PHP output
-                let parser = new DOMParser();
-                let doc = parser.parseFromString(data, 'text/html');
-                let scoreText = doc.querySelector('#score').innerText;
-
                 // Display the score on the current page
-                document.getElementById('score').innerText = scoreText;
+                document.getElementById('score').innerText = 'Your score: ' + data.score;
             })
             .catch(error => console.error('Error:', error));
         });
