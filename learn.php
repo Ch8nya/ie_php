@@ -9,16 +9,6 @@ if (!isset($_SESSION['user_id'])) {
 
 $user_id = $_SESSION['user_id'];
 
-$sql = "SELECT module_number FROM users WHERE id = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("i", $user_id);
-$stmt->execute();
-$stmt->bind_result($module_number);
-$stmt->fetch();
-
-echo json_encode(['moduleNumber' => $module_number]);
-
-
 $sql = "SELECT buy_status FROM users WHERE id = $user_id";
 $result = $conn->query($sql);
 $row = $result->fetch_assoc();
@@ -145,7 +135,7 @@ if ($buy_status != 1) {
                     src="https://assets-global.website-files.com/660eaa71aa6222fb22563027/660eaa71aa6222fb22563122_menu-icon.png"
                     width="22" alt="" class="menu-icon" /></div>
             <div class="div-block-32">
-                <div class="progress"> <span id="progress-number">0 / 7</span> Your Progress</div><img
+                <div class="progress">Your Progress</div><img
                     src="https://assets-global.website-files.com/660eaa71aa6222fb22563027/66183f175b94606c96dcdc4a_icons8-user-30%20(1).png"
                     loading="lazy" alt="" class="image-12" />
                 <div class="uname"><?php   $sql = "SELECT first_name FROM users WHERE id = $user_id";
@@ -464,34 +454,7 @@ document.querySelectorAll('.menumob .w-dropdown-link').forEach(link => {
     link.addEventListener('click', handleMenuClick);
 });
 
-document.addEventListener("DOMContentLoaded", function() {
-            // Function to fetch module number
-            function fetchModuleNumber() {
-                fetch('learn.php')
-                    .then(response => response.json())
-                    .then(data => {
-                        const moduleNumber = data.moduleNumber;
-                        document.getElementById('progress-number').innerText = `${moduleNumber} / 7`;
-                    })
-                    .catch(error => console.error('Error fetching module number:', error));
-            }
 
-            // Fetch module number on page load
-            fetchModuleNumber();
-
-            // Example: Fetch module number on module switch (assuming you have a way to detect this)
-            document.querySelectorAll('.menumob .module-navigator .w-dropdown-link').forEach(button => {
-                button.addEventListener('click', function() {
-                    fetchModuleNumber();
-                });
-            });
-
-            // Fetch module number on login (assuming you have a way to detect this)
-            document.querySelector('button-3').addEventListener('click', function() {
-                // Simulate login and then fetch module number
-                fetchModuleNumber();
-            });
-        });
 
 </script>
      
