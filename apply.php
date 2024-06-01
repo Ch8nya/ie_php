@@ -42,22 +42,49 @@
             text-align: center;
             text-decoration: none;
             border-radius: 4px;
-            border: none;
             cursor: pointer;
         }
-        .apply-button:hover {
-            background-color: #45a049;
+        .popup {
+            display: none;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
         }
-        .apply-button.disabled {
-            background-color: #cccccc;
+        .popup-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            width: 50%;
+            text-align: center;
+        }
+        .close-button {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        .submit-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-top: 10px;
             cursor: not-allowed;
+        }
+        .submit-button.enabled {
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
-
     <h1>Internship Listings</h1>
-
     <table>
         <tr>
             <th>Sr no</th>
@@ -77,7 +104,7 @@
             <td>&#8377;2300p/m</td>
             <td>2 weeks</td>
             <td>&#8377;1150</td>
-            <td><button class="apply-button">Apply</button></td>
+            <td><button class="apply-button" onclick="showPopup(1, 'Title 1', 'Role 1', '₹1200')">Apply</button></td>
         </tr>
         <tr>
             <td>2</td>
@@ -87,7 +114,7 @@
             <td>&#8377;3700p/m</td>
             <td>1 week</td>
             <td>&#8377;925</td>
-            <td><button class="apply-button">Apply</button></td>
+            <td><button class="apply-button" onclick="showPopup(2, 'Title 2', 'Role 2', '₹925')">Apply</button></td>
         </tr>
         <tr>
             <td>3</td>
@@ -97,7 +124,7 @@
             <td>&#8377;4000p/m</td>
             <td>1 week</td>
             <td>&#8377;1000</td>
-            <td><button class="apply-button">Apply</button></td>
+            <td><button class="apply-button" onclick="showPopup(3, 'Title 3', 'Role 3', '₹1000')">Apply</button></td>
         </tr>
         <tr>
             <td>4</td>
@@ -107,7 +134,7 @@
             <td>&#8377;5000 p/m</td>
             <td>1 week</td>
             <td>&#8377;1250</td>
-            <td><button class="apply-button">Apply</button></td>
+            <td><button class="apply-button" onclick="showPopup(4, 'Title 4', 'Role 4', '₹1250')">Apply</button></td>
         </tr>
         <tr>
             <td>5</td>
@@ -140,6 +167,49 @@
             <td><button class="apply-button disabled" disabled>Apply*</button></td>
         </tr>
     </table>
+<div class="popup" id="popup">
+        <div class="popup-content">
+            <span id="popup-close" class="close-button" onclick="hidePopup()">Close</span>
+            <h2>Internship Details</h2>
+            <p id="popup-content"></p>
+            <p>To complete this internship, you have to send us the attached copy of your work and resume at the email address xyz@gmail.com. Please send the mail using the same email that you signed up with, because your payment information is bonded to your email by our payment processor.</p>
+            <input type="checkbox" id="confirm-checkbox" onchange="toggleSubmitButton()"> Confirm application
+            <br>
+            <button id="submit-button" class="submit-button" onclick="submitApplication()" disabled>Submit</button>
+        </div>
+    </div>
 
+    <script>
+        function showPopup(srNo, title, role, amount) {
+            document.getElementById('popup-content').innerHTML = `
+                <strong>Sr no:</strong> ${srNo}<br>
+                <strong>Title:</strong> ${title}<br>
+                <strong>Role:</strong> ${role}<br>
+                <strong>In hand amount:</strong> ${amount}<br>
+            `;
+            document.getElementById('popup').style.display = 'flex';
+        }
+
+        function hidePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+
+        function toggleSubmitButton() {
+            const checkbox = document.getElementById('confirm-checkbox');
+            const submitButton = document.getElementById('submit-button');
+            if (checkbox.checked) {
+                submitButton.disabled = false;
+                submitButton.classList.add('enabled');
+            } else {
+                submitButton.disabled = true;
+                submitButton.classList.remove('enabled');
+            }
+        }
+
+        function submitApplication() {
+            alert('Application successful! Do the assigned work.');
+            window.location.href = 'learn.php';
+        }
+    </script>
 </body>
 </html>
