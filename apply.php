@@ -48,6 +48,10 @@
         .apply-button:hover {
             background-color: #45a049;
         }
+        .apply-button.disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
     </style>
 </head>
 <body>
@@ -113,7 +117,7 @@
             <td>&#8377;8500 p/m</td>
             <td>1 week</td>
             <td>&#8377;2125</td>
-            <td><button class="apply-button">Apply</button></td>
+            <td><button class="apply-button disabled" disabled>Apply*</button></td>
         </tr>
         <tr>
             <td>6</td>
@@ -123,7 +127,7 @@
             <td>&#8377;12500p/m</td>
             <td>8 weeks</td>
             <td>&#8377;25,000</td>
-            <td><button class="apply-button">Apply</button></td>
+            <td><button class="apply-button disabled" disabled>Apply*</button></td>
         </tr>
         <tr>
             <td>7</td>
@@ -133,7 +137,7 @@
             <td>&#8377;32000 p/m</td>
             <td>16 weeks</td>
             <td>&#8377;1,28,000</td>
-            <td><button class="apply-button">Apply</button></td>
+            <td><button class="apply-button disabled" disabled>Apply*</button></td>
         </tr>
     </table>
 
