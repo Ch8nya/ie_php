@@ -9,11 +9,24 @@ if (!isset($_SESSION['user_id'])) {
 
 $user_id = $_SESSION['user_id'];
 
-$sql = "SELECT buy_status, score FROM users WHERE id = $user_id";
+// Fetch moduleNumber and lessonNumber from the database
+$sql = "SELECT moduleNumber, lessonNumber, buy_status, score FROM users WHERE id = $user_id";
 $result = $conn->query($sql);
 $row = $result->fetch_assoc();
+
+$moduleNumber = $row['moduleNumber'];
+$lessonNumber = $row['lessonNumber'];
 $buy_status = $row['buy_status'];
 $existing_score = $row['score'];
+
+// Check if the moduleNumber and lessonNumber are correct
+if ($moduleNumber != 8 || $lessonNumber != 1) {
+    echo "<script>
+            alert('Complete All Modules First!');
+            window.location.href = 'learn.php';
+          </script>";
+    exit();
+}
 
 if ($buy_status != 1) {
     header("Location: buy.php");
