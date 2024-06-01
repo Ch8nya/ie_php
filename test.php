@@ -283,8 +283,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <button type="submit">Submit</button>
            
     <h2 id="score"></h2>
-            <button onclick="window.location='apply.php'">Apply for Internship</button>
-        </form>
+            </form>
+    <button id="apply-btn">Apply for Internship</button>
     </div>
 
     <script>
@@ -300,6 +300,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             .then(data => {
                 // Display the score on the current page
                 document.getElementById('score').textContent = 'Your score: ' + data.score;
+            })
+            .catch(error => console.error('Error:', error));
+        });
+
+        document.getElementById('apply-btn').addEventListener('click', function() {
+            fetch('check_score.php', {
+                method: 'POST'
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.score === null) {
+                    alert('Give Certification Test first');
+                    window.location.href = 'test.php';
+                } else {
+                    window.location.href = 'apply.php';
+                }
             })
             .catch(error => console.error('Error:', error));
         });
