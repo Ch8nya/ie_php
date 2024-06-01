@@ -252,7 +252,7 @@ if ($buy_status != 1) {
                 <nav class="dropdown-list w-dropdown-list"><a href="#" id="module7-lesson1" class="w-dropdown-link">Lesson 1</a><a href="#" id="module7-lesson2"
                         class="w-dropdown-link">Lesson 2</a></nav>
             </div>
-            <a href="#" class="link-block w-inline-block">
+            <a href="test.php" id="internship-certification-assessment-test class="link-block w-inline-block">
                 <div class="text-block-10">Internship Certification Assessment Test</div><img
                     src="https://assets-global.website-files.com/660eaa71aa6222fb22563027/6618d0cfd9722ce6d3838f48_chevron-down.png"
                     loading="lazy" width="12" alt="" class="arrow" />
