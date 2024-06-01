@@ -81,6 +81,12 @@
         .submit-button.enabled {
             cursor: pointer;
         }
+
+        .apply-button.disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        
     </style>
 </head>
 <body>
