@@ -1,35 +1,3 @@
-<?php
-session_start();
-include 'config.php'; // Ensure this file includes database connection details
-
-// Check if projectNo is set for the user
-$user_id = $_SESSION['user_id'];
-$query = "SELECT projectNo FROM users WHERE id = ?";
-$stmt = $conn->prepare($query);
-$stmt->bind_param("i", $user_id);
-$stmt->execute();
-$result = $stmt->get_result();
-$row = $result->fetch_assoc();
-
-if ($row['projectNo'] != null) {
-    echo "<script>alert('Already applied. You are all set!'); window.location.href = 'learn.php';</script>";
-    exit();
-}
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $projectNo = $_POST['projectNo'];
-
-    // Update projectNo in the database
-    $update_query = "UPDATE users SET projectNo = ? WHERE id = ?";
-    $update_stmt = $conn->prepare($update_query);
-    $update_stmt->bind_param("ii", $projectNo, $user_id);
-    $update_stmt->execute();
-    
-    echo "<script>alert('Application submitted successfully!'); window.location.href = 'learn.php';</script>";
-    exit();
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -247,10 +215,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         function submitApplication() {
             alert('Application successful! Do the assigned work.');
             window.location.href = 'learn.php';
-        }
-        function openApplyForm(projectNo) {
-            document.getElementById('applyForm').style.display = 'block';
-            document.getElementById('projectNo').value = projectNo;
         }
     </script>
 </body>
