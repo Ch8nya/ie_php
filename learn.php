@@ -124,7 +124,7 @@ if ($buy_status != 1) {
                                     1</a><a href="#" id="module7-lesson2" class="w-dropdown-link">Lesson 2</a></nav>
                         </div>
                 <a href="#" class="link-block w-inline-block">
-                            <div class="text-block-10">Internship Certification Assessment Test</div><img
+                            <div class="text-block-10">Internship Certification Assessment Test & Apply for Internship</div><img
                                 src="https://assets-global.website-files.com/660eaa71aa6222fb22563027/6618d0cfd9722ce6d3838f48_chevron-down.png"
                                 loading="lazy" width="12" alt="" />
                         </a>
