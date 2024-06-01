@@ -153,7 +153,7 @@ if ($buy_status != 1) {
             <h1 class="heading-2">Module Title</h1>
             <h1 class="sub-heading">Lesson Title</h1>
             <div class="content"></div>
-                <a href="#"
+                <a href="#" id="next-button"
                 class="button-3 w-button">Next</a>
         </div>
         <div class="module-navigator">
@@ -402,6 +402,14 @@ function loadNextLesson() {
       const lessonTitle = titles.modules[currentModule - 1].lessons[currentLesson - 1];
       document.querySelector('.heading-2').textContent = moduleTitle;
       document.querySelector('.sub-heading').textContent = lessonTitle;
+
+      // Check if moduleNumber is 7 and lessonNumber is 2, then hide next-button
+      if (currentModule === 7 && currentLesson === 2) {
+        const nextButton = document.getElementById('next-button');
+        if (nextButton) {
+          nextButton.style.display = 'none';
+        }
+      }
     })
     .catch(error => {
       console.error('Error loading progress:', error);
@@ -409,6 +417,7 @@ function loadNextLesson() {
       loadLesson(currentModule, currentLesson);
     });
 });
+
 
 // Updated function to handle menu clicks
 function handleMenuClick(event) {
