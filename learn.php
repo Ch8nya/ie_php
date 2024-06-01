@@ -348,51 +348,50 @@ if ($buy_status != 1) {
 
   // Updated function to load the next lesson
 function loadNextLesson() {
-  // Increment the lesson number
-  currentLesson++;
+    // Increment the lesson number
+    currentLesson++;
 
-  // Check if the next lesson file exists before updating the content
-  const lessonFilePath = `content/module${currentModule}/lesson${currentLesson}.html`;
-  fetch(lessonFilePath)
-    .then(response => {
-      if (!response.ok) {
-        // If the next lesson doesn't exist, move to the next module and reset the lesson number
-        currentLesson = 1;
-        currentModule++;
-        // Check the existence of the first lesson in the next module
-        return fetch(`content/module${currentModule}/lesson${currentLesson}.html`);
-      }
-      return response;
-    })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(`Lesson not found: ${response.status}`);
-      }
-      return response.text();
-    })
-    .then(data => {
-      // Update the lesson content container with the new content
-      contentDiv.innerHTML = data;
-      // Update the module and lesson titles
-      const moduleTitle = titles.modules[currentModule - 1].title;
-      const lessonTitle = titles.modules[currentModule - 1].lessons[currentLesson - 1];
-      document.querySelector('.heading-2').textContent = moduleTitle;
-      document.querySelector('.sub-heading').textContent = lessonTitle;
+    // Check if the next lesson file exists before updating the content
+    const lessonFilePath = `content/module${currentModule}/lesson${currentLesson}.html`;
+    fetch(lessonFilePath)
+        .then(response => {
+            if (!response.ok) {
+                // If the next lesson doesn't exist, move to the next module and reset the lesson number
+                currentLesson = 1;
+                currentModule++;
+                // Check the existence of the first lesson in the next module
+                return fetch(`content/module${currentModule}/lesson${currentLesson}.html`);
+            }
+            return response;
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Lesson not found: ${response.status}`);
+            }
+            return response.text();
+        })
+        .then(data => {
+            // Update the lesson content container with the new content
+            contentDiv.innerHTML = data;
+            // Update the module and lesson titles
+            const moduleTitle = titles.modules[currentModule - 1].title;
+            const lessonTitle = titles.modules[currentModule - 1].lessons[currentLesson - 1];
+            document.querySelector('.heading-2').textContent = moduleTitle;
+            document.querySelector('.sub-heading').textContent = lessonTitle;
 
-      // Save progress
-      saveProgress(currentModule, currentLesson);
+            // Save progress
+            saveProgress(currentModule, currentLesson);
 
-      // Check if it's the last module and lesson, and redirect to test.php
-      if (currentModule === 7 && currentLesson === 2) {
-        window.location.href = 'test.php';
-      }
-    })
-    .catch(error => {
-      console.error('Error loading lesson:', error);
-      contentDiv.innerHTML = '<p>Lesson not found. Please check the module and lesson numbers.</p>';
-    });
+            // Check if it's the last module and lesson, and redirect to test.php
+            if (currentModule === 7 && currentLesson === 2) {
+                window.location.href = 'test.php';
+            }
+        })
+        .catch(error => {
+            console.error('Error loading lesson:', error);
+            contentDiv.innerHTML = '<p>Lesson not found. Please check the module and lesson numbers.</p>';
+        });
 }
-
   document.addEventListener('DOMContentLoaded', () => {
   fetch('get_progress.php')
     .then(response => {
@@ -435,6 +434,8 @@ function handleMenuClick(event) {
                 } else {
                     // Show a popup saying "Give Internship Certification Assessment Test first"
                     alert("Give Internship Certification Assessment Test first");
+                    // Redirect to the same page (learn.php)
+                    window.location.href = 'learn.php';
                 }
             })
             .catch(error => {
