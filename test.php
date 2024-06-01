@@ -163,6 +163,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <div class="test-container">
         <h1>Certification Test</h1>
+        <h2>Complete this assesment test and proceed to apply for Internship.</h2>
         <form action="#" method="post">
             <div class="question">
                 <label>1. Which of the following is NOT one of the five phases of the design thinking process?</label><br>
