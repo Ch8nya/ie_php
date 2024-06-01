@@ -53,6 +53,12 @@ const titles = {
           'Lesson 1: Atomic design principles',
           'Lesson 2: Creating and maintaining design systems'
         ]
+      },
+        {
+        title: 'Congratulations for Completeing all modules',
+        lessons: [
+          'You may now proceed to give the test and apply for internship.'
+        ]
       }
     ]
   };
