@@ -252,15 +252,11 @@ if ($buy_status != 1) {
                 <nav class="dropdown-list w-dropdown-list"><a href="#" id="module7-lesson1" class="w-dropdown-link">Lesson 1</a><a href="#" id="module7-lesson2"
                         class="w-dropdown-link">Lesson 2</a></nav>
             </div>
-            <a href="test.php" id="internship-certification-assessment-test" class="link-block w-inline-block">
+            <a href="#" class="link-block w-inline-block">
                 <div class="text-block-10">Internship Certification Assessment Test</div><img
                     src="https://assets-global.website-files.com/660eaa71aa6222fb22563027/6618d0cfd9722ce6d3838f48_chevron-down.png"
                     loading="lazy" width="12" alt="" class="arrow" />
             </a>
-            <a href="#" id="apply-internship" class="link-block w-inline-block">
-    <div class="text-block-10">Apply Internship</div>
-    <img src="https://assets-global.website-files.com/660eaa71aa6222fb22563027/6618d0cfd9722ce6d3838f48_chevron-down.png" loading="lazy" width="12" alt="" class="arrow" />
-</a>
         </div>
     </div>
     <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=660eaa71aa6222fb22563027"
@@ -348,50 +344,46 @@ if ($buy_status != 1) {
 
   // Updated function to load the next lesson
 function loadNextLesson() {
-    // Increment the lesson number
-    currentLesson++;
+  // Increment the lesson number
+  currentLesson++;
 
-    // Check if the next lesson file exists before updating the content
-    const lessonFilePath = `content/module${currentModule}/lesson${currentLesson}.html`;
-    fetch(lessonFilePath)
-        .then(response => {
-            if (!response.ok) {
-                // If the next lesson doesn't exist, move to the next module and reset the lesson number
-                currentLesson = 1;
-                currentModule++;
-                // Check the existence of the first lesson in the next module
-                return fetch(`content/module${currentModule}/lesson${currentLesson}.html`);
-            }
-            return response;
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`Lesson not found: ${response.status}`);
-            }
-            return response.text();
-        })
-        .then(data => {
-            // Update the lesson content container with the new content
-            contentDiv.innerHTML = data;
-            // Update the module and lesson titles
-            const moduleTitle = titles.modules[currentModule - 1].title;
-            const lessonTitle = titles.modules[currentModule - 1].lessons[currentLesson - 1];
-            document.querySelector('.heading-2').textContent = moduleTitle;
-            document.querySelector('.sub-heading').textContent = lessonTitle;
+  // Check if the next lesson file exists before updating the content
+  const lessonFilePath = `content/module${currentModule}/lesson${currentLesson}.html`;
+  fetch(lessonFilePath)
+    .then(response => {
+      if (!response.ok) {
+        // If the next lesson doesn't exist, move to the next module and reset the lesson number
+        currentLesson = 1;
+        currentModule++;
+        // Check the existence of the first lesson in the next module
+        return fetch(`content/module${currentModule}/lesson${currentLesson}.html`);
+      }
+      return response;
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`Lesson not found: ${response.status}`);
+      }
+      return response.text();
+    })
+    .then(data => {
+      // Update the lesson content container with the new content
+      contentDiv.innerHTML = data;
+      // Update the module and lesson titles
+      const moduleTitle = titles.modules[currentModule - 1].title;
+      const lessonTitle = titles.modules[currentModule - 1].lessons[currentLesson - 1];
+      document.querySelector('.heading-2').textContent = moduleTitle;
+      document.querySelector('.sub-heading').textContent = lessonTitle;
 
-            // Save progress
-            saveProgress(currentModule, currentLesson);
-
-            // Check if it's the last module and lesson, and redirect to test.php
-            if (currentModule === 7 && currentLesson === 2) {
-                window.location.href = 'test.php';
-            }
-        })
-        .catch(error => {
-            console.error('Error loading lesson:', error);
-            contentDiv.innerHTML = '<p>Lesson not found. Please check the module and lesson numbers.</p>';
-        });
+      // Save progress
+      saveProgress(currentModule, currentLesson);
+    })
+    .catch(error => {
+      console.error('Error loading lesson:', error);
+      contentDiv.innerHTML = '<p>Lesson not found. Please check the module and lesson numbers.</p>';
+    });
 }
+
   document.addEventListener('DOMContentLoaded', () => {
   fetch('get_progress.php')
     .then(response => {
@@ -418,66 +410,38 @@ function loadNextLesson() {
     });
 });
 
+// Updated function to handle menu clicks
 function handleMenuClick(event) {
-    event.preventDefault();
+  // Prevent the default anchor behavior
+  event.preventDefault();
 
-    const id = event.target.id;
+  // Get the ID of the clicked element
+  const id = event.target.id;
 
-    if (id === 'apply-internship') {
-        // Check if the user has a non-null score
-        fetch('check_score.php')
-            .then(response => response.json())
-            .then(data => {
-                if (data.score !== null) {
-                    // Redirect to apply.php
-                    window.location.href = 'apply.php';
-                } else {
-                    // Show a popup saying "Give Internship Certification Assessment Test first"
-                    alert("Give Internship Certification Assessment Test first");
-                    // Redirect to the same page (learn.php)
-                    window.location.href = 'learn.php';
-                }
-            })
-            .catch(error => {
-                console.error('Error checking score:', error);
-            });
-    } else if (id === 'internship-certification-assessment-test') {
-        hasVisitedAllLessons()
-            .then(hasVisited => {
-                if (hasVisited) {
-                    window.location.href = 'test.php';
-                } else {
-                    alert("Visit all modules and lessons first");
-                }
-            })
-            .catch(error => {
-                console.error('Error checking progress:', error);
-            });
-    } else {
-        const match = id.match(/module(\d+)-lesson(\d+)/);
-        if (match) {
-            const moduleNumber = parseInt(match[1]);
-            const lessonNumber = parseInt(match[2]);
+  // Extract moduleNumber and lessonNumber from the ID
+  const match = id.match(/module(\d+)-lesson(\d+)/);
+  if (match) {
+    const moduleNumber = parseInt(match[1]);
+    const lessonNumber = parseInt(match[2]);
 
-            // Load the specified lesson
-            loadLesson(moduleNumber, lessonNumber);
+    // Load the specified lesson
+    loadLesson(moduleNumber, lessonNumber);
 
-            // Update the currentLesson and currentModule
-            currentLesson = lessonNumber;
-            currentModule = moduleNumber;
+    // Update the currentLesson and currentModule
+    currentLesson = lessonNumber;
+    currentModule = moduleNumber;
 
-            // Update the module and lesson titles
-            const moduleTitle = titles.modules[currentModule - 1].title;
-            const lessonTitle = titles.modules[currentModule - 1].lessons[currentLesson - 1];
-            document.querySelector('.heading-2').textContent = moduleTitle;
-            document.querySelector('.sub-heading').textContent = lessonTitle;
+    // Update the module and lesson titles
+    const moduleTitle = titles.modules[currentModule - 1].title;
+    const lessonTitle = titles.modules[currentModule - 1].lessons[currentLesson - 1];
+    document.querySelector('.heading-2').textContent = moduleTitle;
+    document.querySelector('.sub-heading').textContent = lessonTitle;
 
-            // Save progress
-            saveProgress(currentModule, currentLesson);
-        } else {
-            console.error('Invalid ID format. Expected format: "module{moduleNumber}-lesson{lessonNumber}"');
-        }
-    }
+    // Save progress
+    saveProgress(currentModule, currentLesson);
+  } else {
+    console.error('Invalid ID format. Expected format: "module{moduleNumber}-lesson{lessonNumber}"');
+  }
 }
 
 // Add event listeners to the desktop sidebar links
@@ -490,23 +454,6 @@ document.querySelectorAll('.menumob .w-dropdown-link').forEach(link => {
     link.addEventListener('click', handleMenuClick);
 });
 
-function hasVisitedAllLessons() {
-    return new Promise((resolve, reject) => {
-        fetch('get_progress.php')
-            .then(response => response.json())
-            .then(data => {
-                const { moduleNumber, lessonNumber } = data;
-                if (moduleNumber === 7 && lessonNumber === 2) {
-                    resolve(true);
-                } else {
-                    resolve(false);
-                }
-            })
-            .catch(error => {
-                reject(error);
-            });
-    });
-}
 
 
 </script>
