@@ -1,3 +1,35 @@
+<?php
+session_start();
+require_once 'config.php';
+
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit();
+}
+
+$user_id = $_SESSION['user_id'];
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['projectNo'])) {
+    $projectNo = $_POST['projectNo'];
+
+    // Update the projectNo in the database
+    $sql = "UPDATE users SET projectNo = ? WHERE id = ?";
+    if ($stmt = $conn->prepare($sql)) {
+        $stmt->bind_param("ii", $projectNo, $user_id);
+        if ($stmt->execute()) {
+            echo "Project number updated successfully.";
+        } else {
+            echo "Error updating project number: " . $stmt->error;
+        }
+        $stmt->close();
+    } else {
+        echo "Error preparing statement: " . $conn->error;
+    }
+    $conn->close();
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -185,8 +217,8 @@
         </div>
     </div>
 
-   <script>
-    let Pno; // Declare the variable Pno
+  <script>
+    let Pno; // Declare the variable Pno globally
 
     function showPopup(srNo, title, role, amount) {
         Pno = srNo; // Store Sr no in the variable Pno
@@ -215,8 +247,19 @@
         }
     }
 
+    document.getElementById('submit-button').addEventListener('click', function() {
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "apply.php", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                alert(xhr.responseText);
+            }
+        };
+        xhr.send("projectNo=" + Pno);
+    });
+
     function submitApplication() {
-        // Log the Pno variable or perform any other operation as needed
         console.log('Pno:', Pno);
         alert('Application successful! Do the assigned work.');
         window.location.href = 'learn.php';
