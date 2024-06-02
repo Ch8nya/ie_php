@@ -9,6 +9,27 @@ if (!isset($_SESSION['user_id'])) {
 
 $user_id = $_SESSION['user_id'];
 
+// Fetch the projectNo from the database
+$sql = "SELECT projectNo FROM users WHERE id = ?";
+if ($stmt = $conn->prepare($sql)) {
+    $stmt->bind_param("i", $user_id);
+    $stmt->execute();
+    $stmt->bind_result($projectNo);
+    $stmt->fetch();
+    $stmt->close();
+
+    if ($projectNo !== NULL) {
+        echo "<script>
+            alert('You have already applied to the internship. Please complete and mail the assigned work.');
+            window.location.href = 'learn.php';
+        </script>";
+        exit();
+    }
+} else {
+    echo "Error preparing statement: " . $conn->error;
+    exit();
+}
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['projectNo'])) {
     $projectNo = $_POST['projectNo'];
 
