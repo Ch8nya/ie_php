@@ -185,37 +185,43 @@
         </div>
     </div>
 
-    <script>
-        function showPopup(srNo, title, role, amount) {
-            document.getElementById('popup-content').innerHTML = `
-                <strong>Sr no:</strong> ${srNo}<br>
-                <strong>Title:</strong> ${title}<br>
-                <strong>Role:</strong> ${role}<br>
-                <strong>In hand amount:</strong> ${amount}<br>
-            `;
-            document.getElementById('popup').style.display = 'flex';
-        }
+   <script>
+    let Pno; // Declare the variable Pno
 
-        function hidePopup() {
-            document.getElementById('popup').style.display = 'none';
-        }
+    function showPopup(srNo, title, role, amount) {
+        Pno = srNo; // Store Sr no in the variable Pno
+        document.getElementById('popup-content').innerHTML = `
+            <strong>Sr no:</strong> ${srNo}<br>
+            <strong>Title:</strong> ${title}<br>
+            <strong>Role:</strong> ${role}<br>
+            <strong>In hand amount:</strong> ${amount}<br>
+        `;
+        document.getElementById('popup').style.display = 'flex';
+    }
 
-        function toggleSubmitButton() {
-            const checkbox = document.getElementById('confirm-checkbox');
-            const submitButton = document.getElementById('submit-button');
-            if (checkbox.checked) {
-                submitButton.disabled = false;
-                submitButton.classList.add('enabled');
-            } else {
-                submitButton.disabled = true;
-                submitButton.classList.remove('enabled');
-            }
-        }
+    function hidePopup() {
+        document.getElementById('popup').style.display = 'none';
+    }
 
-        function submitApplication() {
-            alert('Application successful! Do the assigned work.');
-            window.location.href = 'learn.php';
+    function toggleSubmitButton() {
+        const checkbox = document.getElementById('confirm-checkbox');
+        const submitButton = document.getElementById('submit-button');
+        if (checkbox.checked) {
+            submitButton.disabled = false;
+            submitButton.classList.add('enabled');
+        } else {
+            submitButton.disabled = true;
+            submitButton.classList.remove('enabled');
         }
-    </script>
+    }
+
+    function submitApplication() {
+        // Log the Pno variable or perform any other operation as needed
+        console.log('Pno:', Pno);
+        alert('Application successful! Do the assigned work.');
+        window.location.href = 'learn.php';
+    }
+</script>
+
 </body>
 </html>
