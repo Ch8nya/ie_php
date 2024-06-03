@@ -57,6 +57,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['projectNo'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Internship Listings</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -66,9 +68,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['projectNo'])) {
             justify-content: center;
             height: 100vh;
             margin: 0;
+            background-color: #eff0e9;
+                        
         }
+
+        h1, h2 {
+            font-family: 'Montserrat', sans-serif;
+        }
+
         h1 {
             margin-bottom: 20px;
+            color: black;
+            font-size: 60px;
+        }
+        h2{
+            font-size: 30px;
         }
         table {
             width: 80%;
@@ -77,11 +91,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['projectNo'])) {
         }
         th, td {
             border: 1px solid #dddddd;
-            text-align: left;
+            text-align: center;
             padding: 8px;
+            color: black;
+            font-family: 'Inter', sans-serif;
         }
         th {
-            background-color: #f2f2f2;
+            background-color: #2d2f31;
+            color: white;
+            border: 1px solid white; /* Set border color of th to black */
+
+        }
+        td {
+            border: 1px solid #000; /* Set border color of td to the original color */
         }
         .wide-column {
             width: 20%;
@@ -107,20 +129,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['projectNo'])) {
             background-color: rgba(0,0,0,0.5);
             justify-content: center;
             align-items: center;
+            
         }
         .popup-content {
             background-color: white;
             padding: 20px;
             border-radius: 5px;
-            width: 50%;
+            width: 70%;
+            height: auto;
             text-align: center;
+            font-family: 'Inter', sans-serif;
+            border: 5px solid black; /* Border color and width of the popup */
+
         }
+        .popup-content h2, .popup-content p, .popup-content input, .popup-content button, .popup-content span {
+            font-family: 'Inter', sans-serif;
+        }
+        .popup-content p {
+            text-align: left;
+        }
+
         .close-button {
             background-color: red;
             color: white;
             border: none;
             padding: 10px 20px;
             cursor: pointer;
+            border-radius: 10px;
         }
         .submit-button {
             background-color: #4CAF50;
@@ -130,6 +165,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['projectNo'])) {
             cursor: pointer;
             margin-top: 10px;
             cursor: not-allowed;
+            border-radius: 10px;
         }
         .submit-button.enabled {
             cursor: pointer;
@@ -138,12 +174,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['projectNo'])) {
         .apply-button.disabled {
             background-color: #cccccc;
             cursor: not-allowed;
+            /* color: black; */
+        }
+
+        /* .line-div {
+            width: 80%; /* or any width you prefer */
+            /* text-align: left;
+        } */
+
+        .line {
+            margin-bottom: 40px;
+            text-align: left;
+            font-family: 'Inter', sans-serif;
         }
         
     </style>
 </head>
 <body>
     <h1>Internship Listings</h1>
+    <p class="line">Select and apply to one of the available internships.</p>
     <table>
         <tr>
             <th>Sr no</th>
@@ -226,15 +275,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['projectNo'])) {
             <td><button class="apply-button disabled" disabled>Apply*</button></td>
         </tr>
     </table>
+    <p class="line">*These are review based internships. To apply, you must first complete any of the remote internships listed above.</p>
 <div class="popup" id="popup">
         <div class="popup-content">
-            <span id="popup-close" class="close-button" onclick="hidePopup()">Close</span>
             <h2>Internship Details</h2>
             <p id="popup-content"></p>
             <p>To complete this internship, you have to send us the attached copy of your work and resume at the email address xyz@gmail.com. Please send the mail using the same email that you signed up with, because your payment information is bonded to your email by our payment processor.</p>
             <input type="checkbox" id="confirm-checkbox" onchange="toggleSubmitButton()"> Confirm application
             <br>
             <button id="submit-button" class="submit-button" onclick="submitApplication()" disabled>Submit</button>
+            <span id="popup-close" class="close-button" onclick="hidePopup()">Close</span>
         </div>
     </div>
 
