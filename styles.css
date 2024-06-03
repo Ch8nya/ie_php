@@ -4160,13 +4160,13 @@ figcaption {
 }
 
 .heading-2 {
-  /* padding-left: 0%; */
+  padding-left: 5%;
   font-weight: 600;
 }
 
 .sub-heading {
   margin-top: 0;
-  /* padding-left: 5%; */
+  padding-left: 5%;
   font-size: 36px;
   font-weight: 500;
   line-height: 50px;
