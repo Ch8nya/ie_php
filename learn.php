@@ -150,8 +150,10 @@ if ($buy_status != 1) {
     </div>
     <div class="div-block-33">
         <div class="title-div">
-            <h1 class="heading-2">Module Title</h1>
-            <h1 class="sub-heading">Lesson Title</h1>
+            <div class="head-div">
+                <h1 class="heading-2">Module Title</h1>
+                <h1 class="sub-heading">Lesson Title</h1>
+          </div>
             <div class="content"></div>
                 <a href="#"
                 class="button-3 w-button">Next</a>
