@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     width="Auto" alt="" class="logo-image" /></a>
             <div class="menu">
                 <nav role="navigation" class="navigation-items w-nav-menu"><a href="viewlistings.html"
-                        class="navigation-item w-nav-link">VIEW LISTINGS</a><a href="#"
+                        class="navigation-item w-nav-link">VIEW LISTINGS</a><a href="https://forms.gle/jR9mq5C2osiWQsMv7"
                         class="navigation-item w-nav-link">HIRE INTERNS</a><a href="Contact.html"
                         class="navigation-item w-nav-link">CONTACT US</a><a href="About.html"
                         class="navigation-item highlight w-nav-link">ABOUT</a>
