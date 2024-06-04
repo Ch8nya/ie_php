@@ -269,6 +269,14 @@ if ($buy_status != 1) {
         <script src="titles.js"></script>
 
         <script>
+
+    function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth' // This will scroll smoothly to the top
+    });
+}
+            
   // Get references to the relevant HTML elements
   const nextButton = document.querySelector('.button-3');
   const contentDiv = document.querySelector('.content');
@@ -296,6 +304,7 @@ if ($buy_status != 1) {
       .then(data => {
         // Update the lesson content container with the new content
         contentDiv.innerHTML = data;
+          scrollToTop();
       })
       .catch(error => {
         console.error('Error loading lesson:', error);
@@ -371,6 +380,7 @@ function loadNextLesson() {
     .then(data => {
       // Update the lesson content container with the new content
       contentDiv.innerHTML = data;
+        scrollToTop();
       // Update the module and lesson titles
       const moduleTitle = titles.modules[currentModule - 1].title;
       const lessonTitle = titles.modules[currentModule - 1].lessons[currentLesson - 1];
@@ -441,6 +451,7 @@ function handleMenuClick(event) {
 
     // Save progress
     saveProgress(currentModule, currentLesson);
+      scrollToTop();
   } else {
     console.error('Invalid ID format. Expected format: "module{moduleNumber}-lesson{lessonNumber}"');
   }
@@ -455,8 +466,6 @@ document.querySelectorAll('.module-navigator .w-dropdown-link').forEach(link => 
 document.querySelectorAll('.menumob .w-dropdown-link').forEach(link => {
     link.addEventListener('click', handleMenuClick);
 });
-
-
 
 </script>
      
