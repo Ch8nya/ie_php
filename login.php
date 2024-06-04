@@ -64,8 +64,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                    src="https://assets-global.website-files.com/660eaa71aa6222fb22563027/660ffb0d9afac914e8c09994_Frame%201.png"
                    width="Auto" alt="" class="logo-image" /></a>
            <div class="menu">
-               <nav role="navigation" class="navigation-items w-nav-menu"><a href="#"
-                       class="navigation-item w-nav-link">VIEW LISTINGS</a><a href="#"
+               <nav role="navigation" class="navigation-items w-nav-menu"><a href="viewlistings.html"
+                       class="navigation-item w-nav-link">VIEW LISTINGS</a><a href="viewlistings.html"
                        class="navigation-item w-nav-link">HIRE INTERNS</a><a href="Contact.html"
                        class="navigation-item w-nav-link">CONTACT US</a><a href="About.html"
                        class="navigation-item highlight w-nav-link">ABOUT</a>
