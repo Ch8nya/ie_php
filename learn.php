@@ -19,10 +19,9 @@ if ($buy_status != 1) {
     exit();
 }
 ?>
+    
 <!DOCTYPE html>
-<!-- This site was created in Webflow. https://www.webflow.com --><!-- Last Published: Tue Apr 16 2024 10:48:33 GMT+0000 (Coordinated Universal Time) -->
-<html data-wf-domain="ie-site-final.webflow.io" data-wf-page="660eaa71aa6222fb22563105"
-    data-wf-site="660eaa71aa6222fb22563027" lang="en">
+<html>
 
 <head>
     <meta charset="utf-8" />
@@ -30,7 +29,6 @@ if ($buy_status != 1) {
     <meta content="Projects" property="og:title" />
     <meta content="Projects" property="twitter:title" />
     <meta content="width=device-width, initial-scale=1" name="viewport" />
-    <meta content="Webflow" name="generator" />
     <link
         href="styles.css"
         rel="stylesheet" type="text/css" />
@@ -41,8 +39,6 @@ if ($buy_status != 1) {
         type="text/javascript">WebFont.load({ google: { families: ["Montserrat:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic"] } });</script>
     <script
         type="text/javascript">!function (o, c) { var n = c.documentElement, t = " w-mod-"; n.className += t + "js", ("ontouchstart" in o || o.DocumentTouch && c instanceof DocumentTouch) && (n.className += t + "touch") }(window, document);</script>
-    <link href="https://assets-global.website-files.com/img/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    <link href="https://assets-global.website-files.com/img/webclip.png" rel="apple-touch-icon" />
 </head>
 
 <body>
