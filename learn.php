@@ -48,7 +48,7 @@ if ($buy_status != 1) {
 <body>
     <div data-animation="default" data-collapse="medium" data-duration="400" data-easing="ease" data-easing2="ease"
         role="banner" class="navbar w-nav">
-        <div class="loggnavigation-wrap"><a href="Program.html" class="logo-link w-nav-brand"><img
+        <div class="loggnavigation-wrap"><a href="learn.php" class="logo-link w-nav-brand"><img
                     src="https://assets-global.website-files.com/660eaa71aa6222fb22563027/66183e8fa5ff3d56423fffbc_Frame%201%20(1).png"
                     width="Auto" alt="" class="logo-image-2" /></a>
             <div class="menumob">
