@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     src="https://assets-global.website-files.com/660eaa71aa6222fb22563027/660ffb0d9afac914e8c09994_Frame%201.png"
                     width="Auto" alt="" class="logo-image" /></a>
             <div class="menu">
-                <nav role="navigation" class="navigation-items w-nav-menu"><a href="#"
+                <nav role="navigation" class="navigation-items w-nav-menu"><a href="viewlistings.html"
                         class="navigation-item w-nav-link">VIEW LISTINGS</a><a href="#"
                         class="navigation-item w-nav-link">HIRE INTERNS</a><a href="Contact.html"
                         class="navigation-item w-nav-link">CONTACT US</a><a href="About.html"
@@ -81,7 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <input class="form-field w-input" maxlength="256" name="password" data-name="Password" placeholder="Create Password:" type="password" id="Password" required="" />
                 <label class="w-checkbox terms-checkbox" style="display: flex; align-items: center;">
     <span class="checkbox-label w-form-label" for="checkbox" style="margin-left: 5px;">
-    By continuing to create an account, you agree to our <a href="tc.php" target="_blank">Terms of Service</a>
+    By continuing to create an account, you agree to our <a href="TandC.php" target="_blank">Terms of Service</a>
 </span>
 </label>
 
