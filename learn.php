@@ -29,6 +29,7 @@ if ($buy_status != 1) {
     <meta content="Projects" property="og:title" />
     <meta content="Projects" property="twitter:title" />
     <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <link rel="icon" href="assets/Favicon.png" type="image/x-icon">
     <link
         href="styles.css"
         rel="stylesheet" type="text/css" />
@@ -45,7 +46,7 @@ if ($buy_status != 1) {
     <div data-animation="default" data-collapse="medium" data-duration="400" data-easing="ease" data-easing2="ease"
         role="banner" class="navbar w-nav">
         <div class="loggnavigation-wrap"><a href="learn.php" class="logo-link w-nav-brand"><img
-                    src="https://assets-global.website-files.com/660eaa71aa6222fb22563027/66183e8fa5ff3d56423fffbc_Frame%201%20(1).png"
+                    src="assets/Logo.png"
                     width="Auto" alt="" class="logo-image-2" /></a>
             <div class="menumob">
                 <nav role="navigation" class="navigation-items w-nav-menu">
