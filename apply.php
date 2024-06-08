@@ -9,6 +9,27 @@ if (!isset($_SESSION['user_id'])) {
 
 $user_id = $_SESSION['user_id'];
 
+// Check if the score is null
+$sql = "SELECT score FROM users WHERE id = ?";
+if ($stmt = $conn->prepare($sql)) {
+    $stmt->bind_param("i", $user_id);
+    $stmt->execute();
+    $stmt->bind_result($score);
+    $stmt->fetch();
+    $stmt->close();
+
+    if (is_null($score)) {
+        echo "<script>
+            alert('Give the assessment test first.');
+            window.location.href = 'test.php';
+        </script>";
+        exit();
+    }
+} else {
+    echo "Error preparing statement: " . $conn->error;
+    exit();
+}
+
 // Fetch the projectNo from the database
 $sql = "SELECT projectNo FROM users WHERE id = ?";
 if ($stmt = $conn->prepare($sql)) {
@@ -50,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['projectNo'])) {
     exit();
 }
 ?>
-
+    
 <!DOCTYPE html>
 <html lang="en">
 <head>
