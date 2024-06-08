@@ -278,6 +278,13 @@ if ($buy_status != 1) {
   // Attach a click event listener to the "Next" button
   nextButton.addEventListener('click', loadNextLesson);
 
+    function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
   // Function to load a specific lesson
   function loadLesson(moduleNumber, lessonNumber) {
     // Construct the file path for the specified lesson
@@ -294,10 +301,14 @@ if ($buy_status != 1) {
       .then(data => {
         // Update the lesson content container with the new content
         contentDiv.innerHTML = data;
+          // Scroll to the top after content is loaded
+        scrollToTop();
       })
       .catch(error => {
         console.error('Error loading lesson:', error);
         contentDiv.innerHTML = '<p>Lesson not found. Please check the module and lesson numbers.</p>';
+          // Scroll to the top even if there is an error
+        scrollToTop();
       });
   }
 
@@ -377,6 +388,9 @@ function loadNextLesson() {
 
       // Save progress
       saveProgress(currentModule, currentLesson);
+
+        // Scroll to the top after updating titles
+      scrollToTop();
     })
     .catch(error => {
       console.error('Error loading lesson:', error);
@@ -439,6 +453,9 @@ function handleMenuClick(event) {
 
     // Save progress
     saveProgress(currentModule, currentLesson);
+
+      // Scroll to the top after updating titles
+      scrollToTop();
   } else {
     console.error('Invalid ID format. Expected format: "module{moduleNumber}-lesson{lessonNumber}"');
   }
