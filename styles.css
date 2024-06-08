@@ -3916,6 +3916,7 @@ figcaption {
 .logo-container {
   justify-content: space-around;
   min-width: 100%;
+  width: 200%; /* Adjusted to accommodate two containers side by side */
   margin-top: 10px;
   margin-bottom: 10px;
   display: flex;
