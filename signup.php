@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <title>SignUp</title>
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <link href="styles.css" rel="stylesheet" type="text/css" />
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="assets/Favicon.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous" />
     <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div data-collapse="medium" data-animation="default" data-duration="400" data-easing="ease" data-easing2="ease"
         role="banner" class="navigation w-nav">
         <div class="navigation-wrap"><a href="Program.html" class="logo-link w-nav-brand"><img
-                    src="https://assets-global.website-files.com/660eaa71aa6222fb22563027/660ffb0d9afac914e8c09994_Frame%201.png"
+                    src="assets/Logo.png"
                     width="Auto" alt="" class="logo-image" /></a>
             <div class="menu">
                 <nav role="navigation" class="navigation-items w-nav-menu"><a href="viewlistings.html"
