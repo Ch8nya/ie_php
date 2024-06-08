@@ -3,7 +3,6 @@ html {
   -ms-text-size-adjust: 100%;
   font-family: sans-serif;
 }
-
 body {
   margin: 0;
 }
@@ -569,6 +568,11 @@ textarea.w-input, textarea.w-select {
   margin-bottom: 0;
   font-weight: normal;
   display: inline-block;
+  color: #ccc;
+}
+
+.w-form-label a {
+  color: #ccc;
 }
 
 .w-radio {
@@ -1178,6 +1182,15 @@ textarea.w-input, textarea.w-select {
   bottom: -100%;
   left: -100%;
   right: -100%;
+}
+
+.content {
+  margin-left: 4%;
+}
+
+.content img {
+  width:100%;
+  height:auto;
 }
 
 .w-background-video > video::-webkit-media-controls-start-playback-button {
@@ -2085,14 +2098,6 @@ textarea.w-input, textarea.w-select {
   display: grid;
 }
 
-.w-code-component > * {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
 :root {
   --black: black;
   --white: white;
@@ -2103,6 +2108,8 @@ textarea.w-input, textarea.w-select {
   padding-left: 20px;
   display: block;
 }
+
+
 
 .w-checkbox:before {
   content: " ";
@@ -2162,7 +2169,7 @@ body {
 }
 
 h1 {
-  margin: 20px 10% 15px;
+/*   margin: 20px 10% 15px; */
   font-size: 44px;
   font-weight: 400;
   line-height: 62px;
@@ -2992,7 +2999,7 @@ figcaption {
 .project-overview-header {
   color: #fff;
   background-color: #f4f4f4;
-  background-image: url("https://cdn.prod.website-files.com/660eaa71aa6222fb22563027/660eaa71aa6222fb22563129_portfolio%201%20-%20wide.svg");
+  background-image: url("https://assets-global.website-files.com/660eaa71aa6222fb22563027/660eaa71aa6222fb22563129_portfolio%201%20-%20wide.svg");
   background-position: 50%;
   background-size: cover;
   justify-content: center;
@@ -3003,12 +3010,12 @@ figcaption {
 }
 
 .project-overview-header.cc-project-2-header {
-  background-image: url("https://cdn.prod.website-files.com/660eaa71aa6222fb22563027/660eaa71aa6222fb22563124_portfolio%202%20-%20wide.svg");
+  background-image: url("https://assets-global.website-files.com/660eaa71aa6222fb22563027/660eaa71aa6222fb22563124_portfolio%202%20-%20wide.svg");
   background-position: 50%;
 }
 
 .project-overview-header.cc-project-3-header {
-  background-image: url("https://cdn.prod.website-files.com/660eaa71aa6222fb22563027/660eaa71aa6222fb2256312a_portfolio%203%20-%20wide.svg");
+  background-image: url("https://assets-global.website-files.com/660eaa71aa6222fb22563027/660eaa71aa6222fb2256312a_portfolio%203%20-%20wide.svg");
   background-size: cover;
 }
 
@@ -3780,6 +3787,7 @@ figcaption {
 .login-link {
   color: #7754f6;
   align-self: center;
+  padding-left: 5px;
   margin-bottom: 2%;
   font-weight: 600;
   text-decoration: none;
@@ -3814,6 +3822,7 @@ figcaption {
 .signup-link {
   color: #7754f6;
   align-self: center;
+  padding-left: 5px;
   margin-bottom: 2%;
   font-weight: 600;
   text-decoration: none;
@@ -4146,6 +4155,10 @@ figcaption {
   width: 80%;
 }
 
+.head-div {
+  width: 80%;
+}
+
 .heading-2 {
   padding-left: 5%;
   font-weight: 600;
@@ -4306,6 +4319,10 @@ figcaption {
 .accordion-item2 {
   width: 100%;
   overflow: hidden;
+}
+
+a {
+    display: inline;
 }
 
 .table_cell {
