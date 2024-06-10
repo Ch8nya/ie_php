@@ -59,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
    <div data-collapse="medium" data-animation="default" data-duration="400" data-easing="ease" data-easing2="ease"
        role="banner" class="navigation w-nav">
-       <div class="navigation-wrap"><a href="Program.html" class="logo-link w-nav-brand"><img
+       <div class="navigation-wrap"><a href="/" class="logo-link w-nav-brand"><img
                    src="assets/Logo.png"
                    width="Auto" alt="" class="logo-image" /></a>
            <div class="menu">
