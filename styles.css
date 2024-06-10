@@ -1965,8 +1965,8 @@ textarea.w-input, textarea.w-select {
 }
 
 .w-nav-button.w--open {
-  color: #fff;
-  background-color: #c8c8c8;
+  color: #2d2f31;
+  background-color: #2d2f31;
 }
 
 .w-nav[data-collapse="all"] .w-nav-menu {
@@ -2006,6 +2006,10 @@ textarea.w-input, textarea.w-select {
 }
 
 @media screen and (max-width: 479px) {
+  .w-nav-button.w--open {
+    color: #2d2f31;
+    background-color: #2d2f31;
+  }
   .w-nav[data-collapse="tiny"] .w-nav-menu {
     display: none;
   }
@@ -4866,7 +4870,7 @@ a {
   }
 
   .menu-button2 {
-    background-color: #fff;
+    background-color: #2d2f31;
     margin-left: 350px;
     padding: 10px;
   }
