@@ -338,7 +338,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['projectNo'])) {
         <div class="popup-content">
             <h2>Internship Details</h2>
             <p id="popup-content"></p>
-            <p>To complete this internship, you have to send us the attached copy of your work and resume at the email address xyz@gmail.com. Please send the mail using the same email that you signed up with, because your payment information is bonded to your email by our payment processor.</p>
+            <p>To complete this internship, you have to send us the attached copy of your work and resume at the email address submissions@earninternship.com. Please send the mail using the same email that you signed up with, because your payment information is bonded to your email by our payment processor.</p>
             <input type="checkbox" id="confirm-checkbox" onchange="toggleSubmitButton()"> Confirm application
             <br>
             <button id="submit-button" class="submit-button" onclick="submitApplication()" disabled>Submit</button>
