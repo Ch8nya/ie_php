@@ -80,7 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <input class="form-field w-input" maxlength="256" name="password" data-name="Password" placeholder="Create Password:" type="password" id="Password" required="" />
                 <label class="w-checkbox terms-checkbox" style="display: flex; align-items: center;">
     <span class="checkbox-label w-form-label" for="checkbox" style="margin-left: 5px;">
-    By continuing to create an account, you agree to our <a href="TandC.php" target="_blank">Terms of Service</a>
+    By continuing to create an account, you agree to our <a href="TandC.html" target="_blank">Terms of Service</a>
 </span>
 </label>
 
