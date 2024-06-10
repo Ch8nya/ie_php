@@ -4440,8 +4440,8 @@ a {
 
   .logo-link {
     align-self: center;
-    width: 216px;
-    height: 52px;
+    /* width: 216px;
+    height: 52px; */
   }
 
   .logo-link.w--current {
@@ -4774,7 +4774,7 @@ a {
   }
 
   .menu-button-2 {
-    background-color: #1a1b1f;
+    background-color: #fff;
     order: 1;
     margin-left: 60%;
     position: relative;
@@ -5269,6 +5269,9 @@ a {
 }
 
 @media screen and (max-width: 479px) {
+  .w-nav-brand {
+    padding-left: 0px;
+  }
   .paragraph-light {
     margin-bottom: 5%;
   }
