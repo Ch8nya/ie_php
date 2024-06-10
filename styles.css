@@ -6,7 +6,6 @@ html {
 body {
   margin: 0;
 }
-
 article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
   display: block;
 }
@@ -940,6 +939,10 @@ textarea.w-input, textarea.w-select {
 }
 
 @media screen and (max-width: 479px) {
+  .form-block {
+    margin-bottom: 5%;
+  }
+
   .w-container {
     max-width: none;
   }
@@ -5266,6 +5269,25 @@ a {
 }
 
 @media screen and (max-width: 479px) {
+  .paragraph-light {
+    margin-bottom: 5%;
+  }
+  .div-block-23{
+    margin-top: 40%;
+    margin-bottom: 20%;
+  }
+  .div-block-24{
+    margin-top: 40%;
+    margin-bottom: 20%;
+  }
+  .intro-header.cc-subpage {
+    margin-bottom: 10%;
+  }
+  .div-block-20 {
+    margin-top: 40%;
+    margin-bottom: 30%;
+  }
+  
   h1 {
     font-size: 36px;
     line-height: 52px;
