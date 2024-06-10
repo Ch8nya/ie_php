@@ -89,8 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['projectNo'])) {
             justify-content: center;
             height: 100vh;
             margin: 0;
-            background-color: #eff0e9;
-                        
+            background-color: #eff0e9;          
         }
 
         h1, h2 {
@@ -102,33 +101,40 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['projectNo'])) {
             color: black;
             font-size: 60px;
         }
+
         h2{
             font-size: 30px;
         }
+
         table {
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 20px;
             width: 80%;
             border-collapse: collapse;
             margin-bottom: 20px;
         }
+
         th, td {
             border: 1px solid #dddddd;
             text-align: center;
             padding: 8px;
-            color: black;
-            font-family: 'Inter', sans-serif;
         }
+
         th {
             background-color: #2d2f31;
             color: white;
-            border: 1px solid white; /* Set border color of th to black */
+            border: 1px solid white;
+        }
 
-        }
         td {
-            border: 1px solid #000; /* Set border color of td to the original color */
+            border: 1px solid #000;
         }
+
         .wide-column {
             width: 20%;
         }
+
         .apply-button {
             display: inline-block;
             padding: 6px 12px;
@@ -140,6 +146,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['projectNo'])) {
             border-radius: 4px;
             cursor: pointer;
         }
+
         .popup {
             display: none;
             position: fixed;
@@ -150,24 +157,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['projectNo'])) {
             background-color: rgba(0,0,0,0.5);
             justify-content: center;
             align-items: center;
-            
         }
+
         .popup-content {
             background-color: white;
             padding: 20px;
             border-radius: 5px;
-            width: 70%;
-            height: auto;
+            width: 50%;
             text-align: center;
-            font-family: 'Inter', sans-serif;
-            border: 5px solid black; /* Border color and width of the popup */
-
-        }
-        .popup-content h2, .popup-content p, .popup-content input, .popup-content button, .popup-content span {
-            font-family: 'Inter', sans-serif;
-        }
-        .popup-content p {
-            text-align: left;
         }
 
         .close-button {
@@ -176,8 +173,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['projectNo'])) {
             border: none;
             padding: 10px 20px;
             cursor: pointer;
-            border-radius: 10px;
         }
+
         .submit-button {
             background-color: #4CAF50;
             color: white;
@@ -186,8 +183,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['projectNo'])) {
             cursor: pointer;
             margin-top: 10px;
             cursor: not-allowed;
-            border-radius: 10px;
         }
+
         .submit-button.enabled {
             cursor: pointer;
         }
@@ -195,20 +192,60 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['projectNo'])) {
         .apply-button.disabled {
             background-color: #cccccc;
             cursor: not-allowed;
-            /* color: black; */
         }
-
-        /* .line-div {
-            width: 80%; /* or any width you prefer */
-            /* text-align: left;
-        } */
 
         .line {
-            margin-bottom: 40px;
-            text-align: left;
-            font-family: 'Inter', sans-serif;
+            margin-bottom: 20px;
+            width: 100%;
+            text-align: center;
         }
-        
+
+        @media screen and (max-width: 991px) {
+            table {
+                width: 100%;
+                font-size: 12px;
+            }
+
+            th, td {
+                padding: 4px;
+            }
+
+            .wide-column {
+                width: auto;
+            }
+
+            .popup-content {
+                width: 80%;
+            }
+        }
+
+        @media screen and (max-width: 767px) {
+            table {
+                font-size: 10px;
+            }
+
+            th, td {
+                padding: 2px;
+            }
+
+            .popup-content {
+                width: 90%;
+            }
+        }
+
+        @media screen and (max-width: 479px) {
+            table {
+                font-size: 8px;
+            }
+
+            th, td {
+                padding: 1px;
+            }
+
+            .popup-content {
+                width: 95%;
+            }
+        }
     </style>
 </head>
 <body>
