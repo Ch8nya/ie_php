@@ -90,7 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['projectNo'])) {
             height: auto;
             margin: 0;
             background-color: #eff0e9;
-            overflow: auto; /* Add this to make the content scrollable */    
+                        
         }
 
         h1, h2 {
@@ -102,40 +102,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['projectNo'])) {
             color: black;
             font-size: 60px;
         }
-
         h2{
             font-size: 30px;
         }
-
         table {
-            margin-left: auto;
-            margin-right: auto;
-            margin-top: 20px;
             width: 80%;
             border-collapse: collapse;
             margin-bottom: 20px;
         }
-
         th, td {
             border: 1px solid #dddddd;
             text-align: center;
             padding: 8px;
+            color: black;
+            font-family: 'Inter', sans-serif;
         }
-
         th {
             background-color: #2d2f31;
             color: white;
-            border: 1px solid white;
-        }
+            border: 1px solid white; /* Set border color of th to black */
 
+        }
         td {
-            border: 1px solid #000;
+            border: 1px solid #000; /* Set border color of td to the original color */
         }
-
         .wide-column {
             width: 20%;
         }
-
         .apply-button {
             display: inline-block;
             padding: 6px 12px;
@@ -147,7 +140,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['projectNo'])) {
             border-radius: 4px;
             cursor: pointer;
         }
-
         .popup {
             display: none;
             position: fixed;
@@ -158,14 +150,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['projectNo'])) {
             background-color: rgba(0,0,0,0.5);
             justify-content: center;
             align-items: center;
+            
         }
-
         .popup-content {
             background-color: white;
             padding: 20px;
             border-radius: 5px;
-            width: 50%;
+            width: 70%;
+            height: auto;
             text-align: center;
+            font-family: 'Inter', sans-serif;
+            border: 5px solid black; /* Border color and width of the popup */
+
+        }
+        .popup-content h2, .popup-content p, .popup-content input, .popup-content button, .popup-content span {
+            font-family: 'Inter', sans-serif;
+        }
+        .popup-content p {
+            text-align: left;
         }
 
         .close-button {
@@ -174,8 +176,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['projectNo'])) {
             border: none;
             padding: 10px 20px;
             cursor: pointer;
+            border-radius: 10px;
         }
-
         .submit-button {
             background-color: #4CAF50;
             color: white;
@@ -184,8 +186,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['projectNo'])) {
             cursor: pointer;
             margin-top: 10px;
             cursor: not-allowed;
+            border-radius: 10px;
         }
-
         .submit-button.enabled {
             cursor: pointer;
         }
@@ -193,12 +195,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['projectNo'])) {
         .apply-button.disabled {
             background-color: #cccccc;
             cursor: not-allowed;
+            /* color: black; */
         }
 
+        /* .line-div {
+            width: 80%; /* or any width you prefer */
+            /* text-align: left;
+        } */
+
         .line {
-            margin-bottom: 20px;
-            width: 100%;
-            text-align: center;
+            margin-bottom: 40px;
+            text-align: left;
+            font-family: 'Inter', sans-serif;
         }
 
         @media screen and (max-width: 991px) {
@@ -335,17 +343,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['projectNo'])) {
         </tr>
     </table>
     <p class="line">*These are review based internships. To apply, you must first complete any of the remote internships listed above.</p>
-<div class="popup" id="popup">
+    <div class="popup" id="popup">
         <div class="popup-content">
             <h2>Internship Details</h2>
             <p id="popup-content"></p>
-            <p>To complete this internship, you have to send us the attached copy of your work and resume at the email address submissions@earninternship.com. Please send the mail using the same email that you signed up with, because your payment information is bonded to your email by our payment processor.</p>
+            <p>To complete this internship, you have to send us the attached copy of your work and resume at the email address xyz@gmail.com. Please send the mail using the same email that you signed up with, because your payment information is bonded to your email by our payment processor.</p>
             <input type="checkbox" id="confirm-checkbox" onchange="toggleSubmitButton()"> Confirm application
             <br>
             <button id="submit-button" class="submit-button" onclick="submitApplication()" disabled>Submit</button>
             <span id="popup-close" class="close-button" onclick="hidePopup()">Close</span>
         </div>
     </div>
+
 
   <script>
     let Pno; // Declare the variable Pno globally
