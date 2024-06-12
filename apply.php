@@ -176,6 +176,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['projectNo'])) {
             border: none;
             padding: 10px 20px;
             cursor: pointer;
+            margin-top: 10px;
             border-radius: 10px;
         }
         .submit-button {
