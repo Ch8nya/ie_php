@@ -471,7 +471,6 @@ function showPopup(srNo) {
         document.getElementById('popup-content').innerHTML = `
             <strong>Sr no:</strong> ${srNo}<br>
             <strong>Title:</strong> ${internshipDetail.title}<br>
-            <strong>Role:</strong>
             <div style="max-height: 300px; overflow-y: auto;">
                 <p>${internshipDetail.role}</p>
             </div><br>
