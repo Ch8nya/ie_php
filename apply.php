@@ -87,9 +87,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['projectNo'])) {
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            height: auto;
             margin: 0;
-            background-color: #eff0e9;          
+            background-color: #eff0e9;
+            overflow: auto; /* Add this to make the content scrollable */    
         }
 
         h1, h2 {
