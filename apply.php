@@ -274,8 +274,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['projectNo'])) {
         </tr>
         <tr>
             <td>2</td>
-            <td></td>
-            <td class="wide-column"></td>
+            <td>FinFlex News</td>
+            <td class="wide-column">Create wireframe design for our user-friendly financial news mobile app called FinFlex catering to both novices and experts. Key features should include a homepage with latest news, trending topics, and market overviews; detailed article pages with multimedia; push notifications for breaking news and market updates. The design should be clean, visually appealing, and easy to navigate.</td>
             <td>REMOTE</td>
             <td>&#8377;3700p/m</td>
             <td>1 week</td>
