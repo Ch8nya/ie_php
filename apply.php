@@ -264,8 +264,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['projectNo'])) {
         </tr>
         <tr>
             <td>1</td>
-            <td></td>
-            <td class="wide-column"></td>
+            <td>LandInfo -satbaara</td>
+            <td class="wide-column">Create wireframe and Mockup of a map based land ownership record app.</td>
             <td>REMOTE</td>
             <td>&#8377;2300p/m</td>
             <td>2 weeks</td>
@@ -275,7 +275,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['projectNo'])) {
         <tr>
             <td>2</td>
             <td>FinFlex News</td>
-            <td class="wide-column">Create wireframe design for our user-friendly financial news mobile app called FinFlex catering to both novices and experts. Key features should include a homepage with latest news, trending topics, and market overviews; detailed article pages with multimedia; push notifications for breaking news and market updates. The design should be clean, visually appealing, and easy to navigate.</td>
+            <td class="wide-column">Design a Wireframe for a News App.</td>
             <td>REMOTE</td>
             <td>&#8377;3700p/m</td>
             <td>1 week</td>
@@ -284,8 +284,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['projectNo'])) {
         </tr>
         <tr>
             <td>3</td>
-            <td></td>
-            <td class="wide-column"></td>
+            <td>MindSolace</td>
+            <td class="wide-column">Design a Wireframe of a Mental Well-being product.</td>
             <td>REMOTE</td>
             <td>&#8377;4000p/m</td>
             <td>1 week</td>
@@ -294,8 +294,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['projectNo'])) {
         </tr>
         <tr>
             <td>4</td>
-            <td></td>
-            <td class="wide-column"></td>
+            <td>BiteSite</td>
+            <td class="wide-column">Create wireframe and Mockup of a reel based food ordering app.</td>
             <td>REMOTE</td>
             <td>&#8377;5000 p/m</td>
             <td>1 week</td>
