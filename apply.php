@@ -304,8 +304,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['projectNo'])) {
         </tr>
         <tr>
             <td>5</td>
-            <td></td>
-            <td class="wide-column"></td>
+            <td>CogniTech</td>
+            <td class="wide-column">Help to define the user model and user interface for various products and features</td>
             <td>HYBRID</td>
             <td>&#8377;8500 p/m</td>
             <td>1 week</td>
@@ -314,8 +314,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['projectNo'])) {
         </tr>
         <tr>
             <td>6</td>
-            <td></td>
-            <td class="wide-column"></td>
+            <td>Pixelmatic</td>
+            <td class="wide-column">Collaborating with cross-functional teams to design intuitive user experiences, creating wireframes, prototypes, and design systems, conducting user research and usability testing, and ensuring design consistency across web and mobile platforms.</td>
             <td>HYBRID</td>
             <td>&#8377;12500p/m</td>
             <td>8 weeks</td>
@@ -324,8 +324,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['projectNo'])) {
         </tr>
         <tr>
             <td>7</td>
-            <td></td>
-            <td class="wide-column"></td>
+            <td>Zepyr</td>
+            <td class="wide-column">Deliver creative, development ready design assets to developers who implement the website across various platforms, and work closely with them to ensure the final build is consistent with the intended vision</td>
             <td>OFFLINE</td>
             <td>&#8377;32000 p/m</td>
             <td>16 weeks</td>
