@@ -357,53 +357,166 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['projectNo'])) {
 
 
   <script>
-    let Pno; // Declare the variable Pno globally
+        let Pno; // Declare the variable Pno globally
 
-    function showPopup(srNo, title, role, amount) {
-        Pno = srNo; // Store Sr no in the variable Pno
+        const internshipDetails = {
+    1: {
+        title: 'LandInfo -SatBaara',
+        role: `<p>Give this design a Figma mockup and wireframe for a Land Information App, including three key screens: Login/Signup, Map Interface, and Land Details Popup.</p>
+    <h3>Requirements:</h3>
+    <h3>Login/Signup Screen:</h3>
+    <ul>
+        <li>Design an intuitive interface for user authentication.</li>
+        <li>Include options for both login and signup.</li>
+    </ul>
+    <h3>Map Interface Screen (for Logged-in Users):</h3>
+    <ul>
+        <li>Display a map centered around the user's current location, similar to Google Maps but without any buttons or toggles.</li>
+        <li>Place a search bar at the top of the screen for users to search for specific locations or addresses.</li>
+    </ul>
+    <h3>Land Details Popup Screen:</h3>
+    <ul>
+        <li>When a user taps on any part of the map, highlight the selected area.</li>
+        <li>A popup should slide up from the bottom of the screen displaying the following details:</li>
+        <ul>
+            <li>Owner's name</li>
+            <li>Legal status of the land</li>
+            <li>Area of the plot</li>
+        </ul>
+        <li>Include a "Find More Info" button within the popup for additional information.</li>
+    </ul>`,
+        amount: '₹1200'
+    },
+    2: {
+        title: 'FinFlex News',
+        role: `<h3>Requirements:</h3>
+        <h3>Homepage:</h3>
+    <ul>
+        <li>Latest news</li>
+        <li>Trending topics</li>
+        <li>Market overviews</li>
+    </ul>
+
+    <h3>Detailed Article Pages:</h3>
+    <ul>
+        <li>Include multimedia content (images)</li>
+    </ul>
+
+    <h3>Push Notifications:</h3>
+    <ul>
+        <li>For breaking news</li>
+        <li>For market updates</li>
+    </ul>
+
+    <h3>Design Requirements:</h3>
+    <ul>
+        <li>The design should be clean, visually appealing, and easy to navigate.</li>
+    </ul>`,
+        amount: '₹925'
+    },
+    3: {
+        title: 'MindSolace',
+        role: `<p>Design a wireframe for a mental health companion app that uses AI to provide personalized support.</p>
+
+    <h3>Key Features:</h3>
+    
+    <h3>Tabs:</h3>
+    <ul>
+        <li>Mood Tracking</li>
+        <li>AI-driven Cognitive-Behavioral Therapy (CBT) Sessions</li>
+        <li>Mindfulness Exercises</li>
+        <li>Community Support Forums</li>
+    </ul>
+
+    <h3>Design Requirements:</h3>
+    <ul>
+        <li>Emphasize a soothing, intuitive interface that encourages daily engagement.</li>
+        <li>Ensure user privacy.</li>
+    </ul>`,
+        amount: '₹1000'
+    },
+    4: {
+        title: 'BiteSite',
+        role: `<h3>Overview:</h3>
+    <p>BiteSight is a revolutionary video-based food delivery app that combines the engaging format of Reels with the convenience of food delivery services like Zomato/Swiggy. This is a single screen application!</p>
+    
+    <h3>Key Features to Include on Screen:</h3>
+    <ol>
+        <li>
+            <strong>Video Feed:</strong> A full-screen video of a dish from a nearby restaurant. Users can scroll vertically to see videos from different nearby restaurants.
+        </li>
+        <li>
+            Text Information at the bottom of the video displaying the dish name and price, and also the restaurant’s name, distance, and an option to save the current dish. Along with a big order now button.
+        </li>
+        <li>
+            <strong>Ratings and Reviews:</strong> Display ratings from Google beneath the dish information.
+        </li>
+        <li>
+            <strong>Swipe Functionality:</strong>
+            <ul>
+                <li><strong>Vertical Scrolling:</strong> To browse through videos of different dishes from various restaurants.</li>
+                <li><strong>Horizontal Scrolling:</strong> To see other videos of the same restaurant.</li>
+            </ul>
+        </li>
+    </ol>`,
+        amount: '₹1250'
+    }
+};
+
+function showPopup(srNo) {
+    Pno = srNo;
+    const internshipDetail = internshipDetails[srNo];
+
+    if (internshipDetail) {
         document.getElementById('popup-content').innerHTML = `
             <strong>Sr no:</strong> ${srNo}<br>
-            <strong>Title:</strong> ${title}<br>
-            <strong>Role:</strong> ${role}<br>
-            <strong>In hand amount:</strong> ${amount}<br>
+            <strong>Title:</strong> ${internshipDetail.title}<br>
+            <strong>Role:</strong>
+            <div style="max-height: 300px; overflow-y: auto;">
+                <p>${internshipDetail.role}</p>
+            </div><br>
+            <strong>In hand amount:</strong> ${internshipDetail.amount}<br>
         `;
         document.getElementById('popup').style.display = 'flex';
+    } else {
+        console.error(`Internship details not found for Sr no ${srNo}`);
     }
+}
 
-    function hidePopup() {
-        document.getElementById('popup').style.display = 'none';
-    }
-
-    function toggleSubmitButton() {
-        const checkbox = document.getElementById('confirm-checkbox');
-        const submitButton = document.getElementById('submit-button');
-        if (checkbox.checked) {
-            submitButton.disabled = false;
-            submitButton.classList.add('enabled');
-        } else {
-            submitButton.disabled = true;
-            submitButton.classList.remove('enabled');
+        function hidePopup() {
+            document.getElementById('popup').style.display = 'none';
         }
-    }
 
-    document.getElementById('submit-button').addEventListener('click', function() {
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", "apply.php", true);
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                alert(xhr.responseText);
+        function toggleSubmitButton() {
+            const checkbox = document.getElementById('confirm-checkbox');
+            const submitButton = document.getElementById('submit-button');
+            if (checkbox.checked) {
+                submitButton.disabled = false;
+                submitButton.classList.add('enabled');
+            } else {
+                submitButton.disabled = true;
+                submitButton.classList.remove('enabled');
             }
-        };
-        xhr.send("projectNo=" + Pno);
-    });
+        }
 
-    function submitApplication() {
-        console.log('Pno:', Pno);
-        alert('Application successful! Do the assigned work.');
-        window.location.href = 'learn.php';
-    }
-</script>
+        document.getElementById('submit-button').addEventListener('click', function() {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "apply.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    alert(xhr.responseText);
+                }
+            };
+            xhr.send("projectNo=" + Pno);
+        });
+
+        function submitApplication() {
+            console.log('Pno:', Pno);
+            alert('Application successful! Do the assigned work.');
+            window.location.href = 'learn.php';
+        }
+    </script>
 
 </body>
 </html>
