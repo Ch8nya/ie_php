@@ -2,6 +2,7 @@
 session_start();
 require_once 'config.php';
 
+// Check if the user is logged in
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
@@ -9,14 +10,23 @@ if (!isset($_SESSION['user_id'])) {
 
 $user_id = $_SESSION['user_id'];
 
-$sql = "SELECT buy_status FROM users WHERE id = $user_id";
+// Fetch user data
+$sql = "SELECT buy_status, moduleNumber, lessonNumber FROM users WHERE id = $user_id";
 $result = $conn->query($sql);
 $row = $result->fetch_assoc();
 $buy_status = $row['buy_status'];
+$moduleNumber = $row['moduleNumber'];
+$lessonNumber = $row['lessonNumber'];
 
-if ($buy_status != 1) {
-    header("Location: buy.php");
-    exit();
+// Check if this is the first visit to learn.php (moduleNumber=1 and lessonNumber=1)
+if ($moduleNumber == 1 && $lessonNumber == 1 && $buy_status == 0) {
+    // Update buy_status to 1
+    $update_sql = "UPDATE users SET buy_status = 1 WHERE id = $user_id";
+    if ($conn->query($update_sql) === TRUE) {
+        $buy_status = 1; // Ensure the updated status is reflected in this session
+    } else {
+        echo "Error updating buy status: " . $conn->error;
+    }
 }
 ?>
 <!DOCTYPE html>
