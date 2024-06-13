@@ -4,7 +4,7 @@ require_once 'config.php';  // Your database connection
 use Razorpay\Api\Api;
 
 $keyId = 'YOUR_RAZORPAY_KEY_ID';
-$keySecret = 'YOUR_RAZORPAY_KEY_SECRET';
+$keySecret = 'eibuypage4321';
 $api = new Api($keyId, $keySecret);
 
 $webhookSecret = 'YOUR_WEBHOOK_SECRET';
