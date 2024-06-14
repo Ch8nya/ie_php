@@ -15,7 +15,7 @@ if (isset($_SESSION['user_id'])) {
         header("Location: learn.php");
         exit();
     } else {
-        header("Location: https://rzp.io/l/8epbvss");
+        header("Location: https://rzp.io/l/GVJWXB2");
         exit();
     }
 } else {
