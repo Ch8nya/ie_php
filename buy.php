@@ -21,12 +21,13 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 $user_id = $_SESSION['user_id'];
+$interestRecorded = false;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['is_interested'])) {
         $sql = "UPDATE users SET is_interested = 1 WHERE id = $user_id";
         if ($conn->query($sql) === TRUE) {
-            echo "Your interest has been recorded.";
+            $interestRecorded = true;
         } else {
             echo "Error updating interest: " . $conn->error;
         }
@@ -92,6 +93,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="div-block2"><a href="logout.php" class="button login logout-btn w-inline-block"><img
                         src="https://assets-global.website-files.com/660eaa71aa6222fb22563027/66183bca5e4b790f772ecaf8_icons8-exit-30.png"
                         loading="lazy" alt="" class="image-13" /></a></div>
+        </div>
+    </div>
         
             <div class="centered-div-container">
         <div class="centered-div">
@@ -102,7 +105,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     $row = $result->fetch_assoc();
                     $first_name = $row['first_name'];  
                     echo htmlspecialchars($first_name);
-                ?>, unfortunately you are not among the first 20 applicants. If you still wish to apply, please show your interest here and our team will contact you soon.
+                ?>, unfortunately you are not among the first free 20 applicants. However, you are among the 50 applicants that can pay the course fees and apply. If you still wish to apply, please show your interest here and our team will contact you soon.
             </p>
             <form method="POST" action="">
                 <label>
@@ -113,6 +116,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </form>
         </div>
     </div>
+
+    <?php if ($interestRecorded): ?>
+    <script type="text/javascript">
+        alert("Your interest has been recorded.");
+        window.location.href = "logout.php";
+    </script>
+    <?php endif; ?>
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
